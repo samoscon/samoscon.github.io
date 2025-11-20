@@ -1,3 +1,3 @@
-# samoscon.github.io
-<p>Dit is een test</p>
-<p>Ik wil graag zien hoe <b>deze website</b> werkt.</p>
+ # samoscon.github.io
+<p>I am Dirk Van Meirvenne living in Belgium</p>
+<p>You can check my <a href="https://samosconsulting.be">professional website</a></p>
