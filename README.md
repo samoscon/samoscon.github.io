@@ -1,3 +1,17 @@
  # samoscon.github.io
-<p>I am Dirk Van Meirvenne living in Belgium</p>
-<p>You can check my <a href="https://samosconsulting.be">professional website</a></p>
+<p>I am Dirk Van Meirvenne living in Belgium. I offer on github aframework to develop a ticketing system (for concerts, events, etc.) which is build on a MVC controller framework. 
+ This controller framework can be used in itself.</p>
+
+ # My projects
+ <ul>
+  <li>controller-framework</li>
+  <li>membersactivities-framework</li>
+ </ul>
+ 
+# Get in touch
+<ul>
+ <li><a href="https://samosconsulting.be/">My professional website</a></li>
+ <li><a href="https://{{site.github_username}}.github.io/">My github website</a></li>
+ <li><a href="https://github.com/{{site.github_username}}">Github personal repo</a></li>
+</ul>
+
