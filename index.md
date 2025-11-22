@@ -1,17 +1,9 @@
 # Hello there!
-<p>I am Dirk Van Meirvenne living in Belgium. I offer on github aframework to develop a ticketing system (for concerts, events, etc.) which is build on a MVC controller framework. 
- This controller framework can be used in itself.</p>
+<p>I am Dirk Van Meirvenne living in Belgium. I offer on github a framework to develop a ticketing system (for concerts, events, etc.) or a subscriptions system (to subscribe to the activities e.g. of a sports club). This framework has been build on top of a MVC controller framework.</p>
 
-# My projects
- <ul>
-  <li>controller-framework</li>
-  <li>membersactivities-framework</li>
- </ul>
- 
 # Get in touch
 <ul>
  <li><a href="https://samosconsulting.be/">My professional website</a></li>
-  <li><a href="https://github.com/samoscon">Github personal repo</a></li>
 </ul>
 
 # My Blog
