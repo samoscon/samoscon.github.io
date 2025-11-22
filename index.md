@@ -11,7 +11,7 @@
 # Get in touch
 <ul>
  <li><a href="https://samosconsulting.be/">My professional website</a></li>
-  <li><a href="https://github.com/{{ site.github_username }}">Github personal repo</a></li>
+  <li><a href="https://github.com/{{ site.github-username }}">Github personal repo</a></li>
 </ul>
 
 # My Blog
