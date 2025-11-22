@@ -2,7 +2,7 @@
 <p>I am Dirk Van Meirvenne living in Belgium. I offer on github aframework to develop a ticketing system (for concerts, events, etc.) which is build on a MVC controller framework. 
  This controller framework can be used in itself.</p>
 
- # My projects
+# My projects
  <ul>
   <li>controller-framework</li>
   <li>membersactivities-framework</li>
