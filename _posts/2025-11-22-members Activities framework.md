@@ -79,7 +79,7 @@ steps, i.e. </span></cite>
 	in the root folder of your project. The content of this file will be
 	discussed in more detail in a later chapter</span></span></cite></p></li>
 	<li><p><cite><span style="font-style: normal">the definition of the
-	control flow of the application. Defalt this flow will be defined
+	control flow of the application. Default this flow will be defined
 	through a XML file ‘</span></cite><cite><span style="font-style: normal"><b>controls.xml’
 	</b></span></cite><cite><span style="font-style: normal"><span style="font-weight: normal">which
 	is located i</span></span></cite><cite><span style="font-style: normal"><span style="font-weight: normal">n
