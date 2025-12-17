@@ -30,18 +30,18 @@ root folder of the client project with the following content:</p>
 </span></cite><cite><span style="font-style: normal"><b>auto</b></span></cite><cite><span style="font-style: normal"><b>load.php</b></span></cite><cite><span style="font-style: normal">
 file in the root folder of your client project:</span></cite></p>
 <ol>
-	<li><p><i><cite>spl_autoload_register(function ($class_name) {</cite></i></p></li>
-	<li><p><cite>  <i>if(preg_match('/\\\\/', $class_name)) {</i></cite></p></li>
-	<li><p><cite>    <i>$class_name = str_replace('\\',
-	DIRECTORY_SEPARATOR, $class_name);</i></cite></p></li>
-	<li><p><cite>  <i>}</i></cite></p></li>
-	<li><p><cite> 
-	<i>if(file_exists(&quot;MVCFramework&quot;.DIRECTORY_SEPARATOR.&quot;{$class_name}.php&quot;))
-	{</i></cite></p></li>
-	<li><p><cite>    <i>require_once
-	&quot;MVCFramework&quot;.DIRECTORY_SEPARATOR.&quot;{$class_name}.php&quot;;</i></cite></p></li>
-	<li><p><cite>  <i>}</i></cite></p></li>
-	<li><p><i><cite>});</cite></i></p></li>
+	<li><p><i><cite>
+		spl_autoload_register(function ($class_name) {
+	</i></cite></p></li>
+	<li><p><i><cite>
+		if(preg_match('/\\\\/', $class_name)) {$class_name = str_replace('\\', DIRECTORY_SEPARATOR, $class_name);}
+	</i></cite></p></li>
+	<li><p><cite><i>
+		if(file_exists(&quot;MVCFramework&quot;.DIRECTORY_SEPARATOR.&quot;{$class_name}.php&quot;)){require_once &quot;MVCFramework&quot;.DIRECTORY_SEPARATOR.&quot;{$class_name}.php&quot;;}
+	</cite></i></p></li>
+	<li><p><i><cite>
+		});
+	</i></cite></p></li>
 </ol>
 <p><br/>
 <br/>
