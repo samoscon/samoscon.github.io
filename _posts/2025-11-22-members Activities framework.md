@@ -43,53 +43,26 @@ file in the root folder of your client project:</span></cite></p>
 		});
 	</cite></i></li>
 </ol>
-<p><br/>
-<br/>
-
-</p>
-<p><cite><span style="font-style: normal">Each url request to your
+<p>Each url request to your
 domain should be directed to the index.php file followed by a path
 name. This means that a url should be constructed as
 [domainname].index.php/[pathname]?[parameters]. You can avoid the use
 of the index.php in each url by parameterizing your webhost server
 access file. In an Apache 2 server, this would mean you can add an
-</span></cite><cite><span style="font-style: normal"><b>.htaccess</b></span></cite><cite><span style="font-style: normal">
-file </span></cite><cite><span style="font-style: normal">in the root
-folder of your project</span></cite><cite><span style="font-style: normal">
-with the following content </span></cite><cite><span style="font-style: normal">included</span></cite><cite><span style="font-style: normal">:</span></cite></p>
-<p><br/>
-<br/>
+<b>.htaccess</b>file in the root
+folder of your project with the following content included:</p>
+<p>...</p>
+<p><i>RewriteEngine on</i></p>
+<p><i>RewriteCond %{SERVER_PORT} ^80$</cite></i></p>
+<p><i>RewriteRule ^.*$ https://%{SERVER_NAME}%{REQUEST_URI}[R=301,L]</i></p>
+<p><br/></p>
+<p><i>RewriteCond %{REQUEST_FILENAME} !-f</i></p>
+<p><i>RewriteCond %{REQUEST_FILENAME} !-d</i></p>
+<p><i>RewriteRule ^(.*)\/?.*$ index.php/$1 [L,QSA,NC]</i></p>
+<p>...</p>
 
-</p>
-<p><cite>…<span style="font-style: normal">..</span></cite></p>
-<p><i><cite>RewriteEngine on</cite></i></p>
-<p><i><cite>RewriteCond %{SERVER_PORT} ^80$</cite></i></p>
-<p><i><cite>RewriteRule ^.*$ https://%{SERVER_NAME}%{REQUEST_URI}
-[R=301,L]</cite></i></p>
-<p><br/>
-<br/>
-
-</p>
-<p><i><cite>RewriteCond %{REQUEST_FILENAME} !-f</cite></i></p>
-<p><i><cite>RewriteCond %{REQUEST_FILENAME} !-d</cite></i></p>
-<p><i><cite>RewriteRule ^(.*)\/?.*$ index.php/$1 [L,QSA,NC]</cite></i></p>
-<p><cite>…<span style="font-style: normal">...</span></cite></p>
-<p><br/>
-<br/>
-
-</p>
-<p><cite><span style="font-style: normal">With this redirect, your
-url request can have the structure
-</span></cite><cite><span style="font-style: normal">[domainname]/[pathname]?[parameters]
-</span></cite><cite><span style="font-style: normal">(e.g.
-“app.myticketing.com/admin” or
-“app.myticketing.com/editMember?id=234585”).</span></cite></p>
-<p><br/>
-<br/>
-
-</p>
-<h3 class="western"><cite><span style="font-style: normal">The
-Controller::</span></cite><cite><span style="font-style: normal">r</span></cite><cite><span style="font-style: normal">un</span></cite></h3>
+<p>With this redirect, yoururl request can have the structure [domainname]/[pathname]?[parameters] (e.g. “app.myticketing.com/admin” or “app.myticketing.com/editMember?id=234585”).</p>
+<p class="h3 text-primary mt-3">The Controller::Run</p>
 <p><cite><span style="font-style: normal">When the index.php
 initiates the Controller to “run”, The Controller will execute 2
 distinct stages. In a first stage, the Controller will “initiate
