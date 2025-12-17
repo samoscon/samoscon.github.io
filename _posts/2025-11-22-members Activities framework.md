@@ -137,7 +137,7 @@ name=&quot;/errorView&quot; /&gt;</span></i></cite></p>
 
 </p>
 <p><cite><span style="font-style: normal"><span style="font-weight: normal">This
-short example shows you how the control flow binds </span></span></cite><cite><span style="font-style: normal"><span style="font-weight: normal">a</span></span></cite><cite><span style="font-style: normal"><span style="font-weight: normal">
+short controls.xml example shows you how the control flow binds </span></span></cite><cite><span style="font-style: normal"><span style="font-weight: normal">a</span></span></cite><cite><span style="font-style: normal"><span style="font-weight: normal">
 path “/” to 1 Command class “DefaultCommand” and 1 view
 “defaultView”.  In the  example this defaultView is a login
 screen. The DefaultCommand will </span></span></cite><cite><span style="font-style: normal"><span style="font-weight: normal">in
