@@ -41,7 +41,7 @@ file in the root folder of your client project:</span></cite></p>
 	</i></cite></li>
 	<li><i><cite>
 		});
-	</i></cite></li>
+	</cite></i></li>
 </ol>
 <p><br/>
 <br/>
