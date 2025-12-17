@@ -49,7 +49,7 @@ name. This means that a url should be constructed as
 [domainname].index.php/[pathname]?[parameters]. You can avoid the use
 of the index.php in each url by parameterizing your webhost server
 access file. In an Apache 2 server, this would mean you can add an
-<b>.htaccess</b>file in the root
+<b>.htaccess</b> file in the root
 folder of your project with the following content included:</p>
 <p>...</p>
 <p><i>RewriteEngine on</i></p>
