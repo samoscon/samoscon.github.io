@@ -140,7 +140,7 @@ name=&quot;/errorView&quot; /&gt;</span></i></cite></p>
 <p><cite>        <i><span style="font-weight: normal">&lt;/status&gt;</span></i></cite></p>
 <p><cite>    <i><span style="font-weight: normal">&lt;/</span></i></cite><cite><i><b>command</b></i></cite><cite><i><span style="font-weight: normal">&gt;</span></i></cite></p>
 <p><cite>    <i><span style="font-weight: normal">&lt;</span></i></cite><cite><i><b>command</b></i></cite><cite><i><span style="font-weight: normal">
-path=&quot;/</span></i></cite><cite><i><span style="font-weight: normal">activity</span></i></cite><cite><i><span style="font-weight: normal">&quot;
+path=&quot;/</span></i></cite><cite><i><span style="font-weight: normal">example</span></i></cite><cite><i><span style="font-weight: normal">&quot;
 class=&quot;</span></i></cite><cite><i><span style="font-weight: normal">\commands\ExampleCommand</span></i></cite><cite><i><span style="font-weight: normal">&quot;&gt;</span></i></cite></p>
 <p><cite>        <i><span style="font-weight: normal">&lt;view
 name=&quot;/</span></i></cite><cite><i><span style="font-weight: normal">example</span></i></cite><cite><i><span style="font-weight: normal">View&quot;
@@ -172,7 +172,7 @@ this case </span></span></cite><cite><span style="font-style: normal"><span styl
 checking the username/password combination and will return a status
 depending on the result of the test. If the result is OK, the control
 flow will forward the user to a new path (i.e. a new command and
-view) named ‘activity’. </span></span></cite><cite><span style="font-style: normal"><span style="font-weight: normal">If
+view) named ‘example’. </span></span></cite><cite><span style="font-style: normal"><span style="font-weight: normal">If
 not, the control flow will go to an error screen. This is basically
 how the control flow works. </span></span></cite><cite><span style="font-style: normal"><span style="font-weight: normal">The
 methodology and </span></span></cite><cite><span style="font-style: normal"><span style="font-weight: normal">full
