@@ -61,7 +61,7 @@ folder of your project with the following content included:</p>
 <p><i>RewriteRule ^(.*)\/?.*$ index.php/$1 [L,QSA,NC]</i></p>
 <p>...</p>
 
-<p>With this redirect, yoururl request can have the structure [domainname]/[pathname]?[parameters] (e.g. “app.myticketing.com/admin” or “app.myticketing.com/editMember?id=234585”).</p>
+<p>With this redirect, your url request can have the structure [domainname]/[pathname]?[parameters] (e.g. “app.myticketing.com/admin” or “app.myticketing.com/editMember?id=234585”).</p>
 <p class="h3 text-primary mt-3">The Controller::Run</p>
 <p><cite><span style="font-style: normal">When the index.php
 initiates the Controller to “run”, The Controller will execute 2
