@@ -2,7 +2,7 @@
 layout: post
 author: dirkvm
 ---
-<h1>High level overview</h1>
+<p class="h1">High level overview</p>
 <p>The memberactivities framework requires a specific set-up in your
 client project. An example of this set-up can be found under the
 ‘vendor/samoscon/membersactivities-framework/example’ directory.</p>
@@ -10,8 +10,8 @@ client project. An example of this set-up can be found under the
 files in the example collaborate with the framework.</p>
 <p><img src="/assets/test_html_1c72bef4.gif" name="Image1" align="left" width="642" height="310" border="0"/>
 </p>
-<h2 class="western">The controller framework</h2>
-<h3 class="western">The Controller</h3>
+<p class="h2">The controller framework</p>
+<p class="h3">The Controller</p>
 <p>The membersactivities is based on an MVC (Model - View -
 Controller) framework. Each time a client browser sends a request to
 the webhost, the request will be forwarded to a Controller that will
