@@ -53,7 +53,7 @@ access file. In an Apache 2 server, this would mean you can add an
 folder of your project with the following content included:</p>
 <p>...</p>
 <p><i>RewriteEngine on</i></p>
-<p><i>RewriteCond %{SERVER_PORT} ^80$</cite></i></p>
+<p><i>RewriteCond %{SERVER_PORT} ^80$</i></p>
 <p><i>RewriteRule ^.*$ https://%{SERVER_NAME}%{REQUEST_URI}[R=301,L]</i></p>
 <p><br/></p>
 <p><i>RewriteCond %{REQUEST_FILENAME} !-f</i></p>
