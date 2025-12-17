@@ -19,14 +19,14 @@ handle the request.
 </p>
 <p>Therefor your client project needs an <b>index.php</b> file in the
 root folder of the client project with the following content:</p>
-<blockquote class="blockquote">
+<code>
 <ol>
 	<li><p><i><cite>include './vendor/autoload.php';</cite></i></p></li>
 	<li><p><i><cite>include './autoload.php'; </cite><cite><font size="1" style="font-size: 8pt">//Facilitates
 	the automatic load of the classes in your client project</font></cite></i></p></li>
 	<li><p><i><cite>controllerframework\controllers\Controller::run();</cite></i></p></li>
 </ol>
-</blockquote>
+</code>
 <p style="page-break-before: always"><cite><span style="font-style: normal">Line
 2 in the above script is optional, but if you use it, you need an
 </span></cite><cite><span style="font-style: normal"><b>auto</b></span></cite><cite><span style="font-style: normal"><b>load.php</b></span></cite><cite><span style="font-style: normal">
