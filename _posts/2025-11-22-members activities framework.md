@@ -3,59 +3,12 @@ layout: post
 author: dirkvm
 ---
 <h1>High level overview</h1>
-<p><br/>
-<br/>
-
-</p>
 <p>The memberactivities framework requires a specific set-up in your
 client project. An example of this set-up can be found under the
 ‘vendor/samoscon/membersactivities-framework/example’ directory.</p>
 <p>The below illustration provides an overview how the different
 files in the example collaborate with the framework.</p>
 <p><img src="1%20high%20level%20overview_html_42ddbf75.gif" name="Image1" align="left" width="642" height="310" border="0"/>
-<br/>
-<br/>
-
-</p>
-<p><br/>
-<br/>
-
-</p>
-<p><br/>
-<br/>
-
-</p>
-<p><br/>
-<br/>
-
-</p>
-<p><br/>
-<br/>
-
-</p>
-<p><br/>
-<br/>
-
-</p>
-<p><br/>
-<br/>
-
-</p>
-<p><br/>
-<br/>
-
-</p>
-<p><br/>
-<br/>
-
-</p>
-<p><br/>
-<br/>
-
-</p>
-<p><br/>
-<br/>
-
 </p>
 <h2 class="western">The controller framework</h2>
 <h3 class="western">The Controller</h3>
@@ -72,14 +25,6 @@ root folder of the client project with the following content:</p>
 	the automatic load of the classes in your client project</font></cite></i></p></li>
 	<li><p><i><cite>controllerframework\controllers\Controller::run();</cite></i></p></li>
 </ol>
-<p><br/>
-<br/>
-
-</p>
-<p><br/>
-<br/>
-
-</p>
 <p style="page-break-before: always"><cite><span style="font-style: normal">Line
 2 in the above script is optional, but if you use it, you need an
 </span></cite><cite><span style="font-style: normal"><b>auto</b></span></cite><cite><span style="font-style: normal"><b>load.php</b></span></cite><cite><span style="font-style: normal">
