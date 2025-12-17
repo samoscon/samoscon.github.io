@@ -10,7 +10,7 @@ client project. An example of this set-up can be found under the
 files in the example collaborate with the framework.</p>
 <p><img src="/assets/1 high level overview_html_42ddbf75.gif" name="Image1" align="center" width="95%" height="95%" border="1"/>
 </p><br/>
-<p class="h2 mt-2">The controller framework</p>
+<p class="h2 text-primary mt-2">The controller framework</p>
 <p class="h3 mt-3">The Controller - the basics</p>
 <p>The membersactivities is based on an <a href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93controller">MVC (Model - View -
 Controller) framework</a>. Each time a client browser sends a request to
