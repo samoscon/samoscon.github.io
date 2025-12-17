@@ -10,8 +10,8 @@ client project. An example of this set-up can be found under the
 files in the example collaborate with the framework.</p>
 <p><img src="/assets/1 high level overview_html_42ddbf75.gif" name="Image1" align="left" width="100%" height="100%" border="1"/>
 </p><br/>
-<p class="h2">The controller framework</p>
-<p class="h3">The Controller</p>
+<p class="h2 mt-2">The controller framework</p>
+<p class="h3 mt-3">The Controller</p>
 <p>The membersactivities is based on an MVC (Model - View -
 Controller) framework. Each time a client browser sends a request to
 the webhost, the request will be forwarded to a Controller that will
