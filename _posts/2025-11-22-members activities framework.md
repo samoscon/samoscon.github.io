@@ -18,7 +18,7 @@ the webhost, the request will be forwarded to a Controller that will
 handle the request. 
 </p>
 <p>Therefor your client project needs an <b>index.php</b> file in the
-root folder of the client project with the following content:</p>
+root folder of the client project with the following content:
 <code>
 <ol>
 	<li><p><i><cite>include './vendor/autoload.php';</cite></i></p></li>
@@ -26,7 +26,7 @@ root folder of the client project with the following content:</p>
 	the automatic load of the classes in your client project</font></cite></i></p></li>
 	<li><p><i><cite>controllerframework\controllers\Controller::run();</cite></i></p></li>
 </ol>
-</code>
+</code></p>
 <p style="page-break-before: always"><cite><span style="font-style: normal">Line
 2 in the above script is optional, but if you use it, you need an
 </span></cite><cite><span style="font-style: normal"><b>auto</b></span></cite><cite><span style="font-style: normal"><b>load.php</b></span></cite><cite><span style="font-style: normal">
