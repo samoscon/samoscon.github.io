@@ -33,15 +33,15 @@ file in the root folder of your client project:</span></cite></p>
 	<li><i><cite>
 		spl_autoload_register(function ($class_name) {
 	</cite></i></li>
-	<li><p><i><cite>
+	<li><i><cite>
 		if(preg_match('/\\\\/', $class_name)) {$class_name = str_replace('\\', DIRECTORY_SEPARATOR, $class_name);}
-	</i></cite></p></li>
-	<li><p><cite><i>
+	</cite></i></li>
+	<li><cite><i>
 		if(file_exists(&quot;MVCFramework&quot;.DIRECTORY_SEPARATOR.&quot;{$class_name}.php&quot;)){require_once &quot;MVCFramework&quot;.DIRECTORY_SEPARATOR.&quot;{$class_name}.php&quot;;}
-	</cite></i></p></li>
-	<li><p><i><cite>
+	</i></cite></li>
+	<li><i><cite>
 		});
-	</i></cite></p></li>
+	</i></cite></li>
 </ol>
 <p><br/>
 <br/>
