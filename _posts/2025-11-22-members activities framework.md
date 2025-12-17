@@ -8,7 +8,7 @@ client project. An example of this set-up can be found under the
 ‘vendor/samoscon/membersactivities-framework/example’ directory.</p>
 <p>The below illustration provides an overview how the different
 files in the example collaborate with the framework.</p>
-<p><img src="1%20high%20level%20overview_html_42ddbf75.gif" name="Image1" align="left" width="642" height="310" border="0"/>
+<p><img src="/assets/test_html_1c72bef4.gif" name="Image1" align="left" width="642" height="310" border="0"/>
 </p>
 <h2 class="western">The controller framework</h2>
 <h3 class="western">The Controller</h3>
