@@ -9,7 +9,7 @@ client project. An example of this set-up can be found under the
 <p>The below illustration provides an overview how the different
 files in the example collaborate with the framework.</p>
 <p><img src="/assets/test_html_1c72bef4.gif" name="Image1" align="left" width="642" height="310" border="0"/>
-</p>
+</p><br/>
 <p class="h2">The controller framework</p>
 <p class="h3">The Controller</p>
 <p>The membersactivities is based on an MVC (Model - View -
