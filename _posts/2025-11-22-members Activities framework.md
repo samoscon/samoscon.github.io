@@ -161,5 +161,5 @@ stage “handle the Request”, i.e. :</span></span></cite>
 	1. the	Command class that is linked to the path in the url request will be	executed to create a Response. Commands in your client project must inherit from a
 	Command class in the Controllerframework and therefore need at least the following content:
 </p>
-<p><img src="/assets/ExampleCommand.gif" name="Image1" align="center" width="95%" height="95%" border="1"/>
+<p><img src="/assets/ExampleCommand.gif" name="Image2" align="center" width="60%" height="60%" border="1"/>
 </p><br/>
