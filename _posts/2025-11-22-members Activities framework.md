@@ -155,12 +155,11 @@ be discussed in more detail in a later chapter. </span></span></cite>
 </p>
 <p><cite><span style="font-style: normal"><span style="font-weight: normal">Once
 the application has been initialized, the Controller will in a second
-stage “handle the Request”, i.e. </span></span></cite>
+stage “handle the Request”, i.e. :</span></span></cite>
 </p>
-<ol>
-	<li><p><cite><span style="font-style: normal"><span style="font-weight: normal">the
-	Command class that is linked to the path in the url request will be
-	executed. Commands in your client project must inherit from a
-	Command class in the Controllerframework</span></span></cite></p></li>
-</ol>
-
+<p>
+	1. the	Command class that is linked to the path in the url request will be	executed to create a Response. Commands in your client project must inherit from a
+	Command class in the Controllerframework and therefore need at least the following content:
+</p>
+<p><img src="/assets/1 high level overview_html_42ddbf75.gif" name="Image1" align="center" width="95%" height="95%" border="1"/>
+</p><br/>
