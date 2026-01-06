@@ -19,30 +19,8 @@ handle the request.
 </p>
 <p>Therefor your client project needs an <b>index.php</b> file in the
 root folder of the client project with the following content:</p>
-<ol>
-	<li><p><i><cite>include './vendor/autoload.php';</cite></i></p></li>
-	<li><p><i><cite>include './autoload.php'; </cite><cite><font size="1" style="font-size: 8pt">//Facilitates
-	the automatic load of the classes in your client project</font></cite></i></p></li>
-	<li><p><i><cite>controllerframework\controllers\Controller::run();</cite></i></p></li>
-</ol>
-<p style="page-break-before: always"><cite><span style="font-style: normal">Line
-2 in the above script is optional, but if you use it, you need an
-</span></cite><cite><span style="font-style: normal"><b>auto</b></span></cite><cite><span style="font-style: normal"><b>load.php</b></span></cite><cite><span style="font-style: normal">
-file in the root folder of your client project:</span></cite></p>
-<ol>
-	<li><i><cite>
-		spl_autoload_register(function ($class_name) {
-	</cite></i></li>
-	<li><i><cite>
-		if(preg_match('/\\\\/', $class_name)) {$class_name = str_replace('\\', DIRECTORY_SEPARATOR, $class_name);}
-	</cite></i></li>
-	<li><cite><i>
-		if(file_exists(&quot;MVCFramework&quot;.DIRECTORY_SEPARATOR.&quot;{$class_name}.php&quot;)){require_once &quot;MVCFramework&quot;.DIRECTORY_SEPARATOR.&quot;{$class_name}.php&quot;;}
-	</i></cite></li>
-	<li><i><cite>
-		});
-	</cite></i></li>
-</ol>
+<p><img src="/assets/IndexFile.gif" name="Image3" align="center" width="60%" height="60%" border="1"/>
+</p><br/>
 <p>Each url request to your
 domain should be directed to the index.php file followed by a path
 name. This means that a url should be constructed as
