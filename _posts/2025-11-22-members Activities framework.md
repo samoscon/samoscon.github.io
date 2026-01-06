@@ -29,16 +29,8 @@ of the index.php in each url by parameterizing your webhost server
 access file. In an Apache 2 server, this would mean you can add an
 <b>.htaccess</b> file in the root
 folder of your project with the following content included:</p>
-<p>...</p>
-<p><i>RewriteEngine on</i></p>
-<p><i>RewriteCond %{SERVER_PORT} ^80$</i></p>
-<p><i>RewriteRule ^.*$ https://%{SERVER_NAME}%{REQUEST_URI}[R=301,L]</i></p>
-<p><br/></p>
-<p><i>RewriteCond %{REQUEST_FILENAME} !-f</i></p>
-<p><i>RewriteCond %{REQUEST_FILENAME} !-d</i></p>
-<p><i>RewriteRule ^(.*)\/?.*$ index.php/$1 [L,QSA,NC]</i></p>
-<p>...</p>
-
+<p><img src="/assets/htaccess.gif" name="Image" align="center" width="60%" height="60%" border="1"/>
+</p><br/>
 <p>With this redirect, your url request can have the structure [domainname]/[pathname]?[parameters] (e.g. “app.myticketing.com/admin” or “app.myticketing.com/editMember?id=234585”).</p>
 <p class="h3 text-primary mt-3">The Controller::Run</p>
 <p><cite><span style="font-style: normal">When the index.php
