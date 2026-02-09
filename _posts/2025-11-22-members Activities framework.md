@@ -28,6 +28,8 @@ root folder of the client project with the following content:</p>
 <p class="h3 text-primary mt-3">The Controller::Run</p>
 <p>When the index.php initiates the Controller to “run”, The Controller will execute 2 distinct stages. In a first stage, the Controller will “initiate the application”. This initialisation is executed in 2 different steps, i.e. </p>
 <p>1. the set-up of global variables and the passwords for your database, mailserver, paymentsystem (in the example based on mollie), Google Wallet Tickets API, etc., etc.  . This set-up is done through a file <i>app_options.ini</i> which is located in a folder <b>/config</b> in the root folder of your project. The content of this file will be	discussed in more detail in a later chapter. The app_options.ini file should contain at least the following lines:</p>
+<p><img src="/assets/app_options_basic.jpg" name="Image4" align="center" width="60%" height="60%" border="1"/>
+</p><br/>
 <p>2. the definition of the	control flow of the application. Default this flow will be defined through a XML file <b>controls.xml</b> which	is located in a folder <b>MVCFramework</b> in the root folder of your project. For now, it is sufficient to understand that the file should at a minimum contain something like:</span></span></cite></p>
 
 <p><br/>
