@@ -41,7 +41,7 @@ steps, i.e. </span></cite>
 	which is located in a folder ‘</span></span></cite><cite><span style="font-style: normal"><b>/config</b></span></cite><cite><span style="font-style: normal"><span style="font-weight: normal">’
 	in the root folder of your project. The content of this file will be
 	discussed in more detail in a later chapter.</span></span></cite></p>
-	<p>The app_options.ini should contain at least following lines:</p>
+	<p>The app_options.ini should contain at least following lines: </p>
 	<p><img src="/assets/app_options_basic.jpg" name="Image3" align="center" width="60%" height="60%" border="1"/>
 </p><br/></li>
 	<li><p><cite><span style="font-style: normal">the definition of the
