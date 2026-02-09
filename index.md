@@ -6,7 +6,7 @@
  <li><a href="https://samosconsulting.be/">My professional website</a></li>
 </ul>
 
-# My Blog
+# Documentation
 <ul>
  {% for post in site.posts %}
  <li>
