@@ -40,10 +40,7 @@ steps, i.e. </span></cite>
 	‘</span></cite><cite><span style="font-style: normal"><span style="font-weight: normal">app_options.ini’
 	which is located in a folder ‘</span></span></cite><cite><span style="font-style: normal"><b>/config</b></span></cite><cite><span style="font-style: normal"><span style="font-weight: normal">’
 	in the root folder of your project. The content of this file will be
-	discussed in more detail in a later chapter.</span></span></cite></p>
-	<p>The app_options.ini should contain at least following lines: </p>
-	<p><img src="/assets/app_options_basic.jpg" name="Image3" align="center" width="60%" height="60%" border="1"/>
-</p><br/></li>
+	discussed in more detail in a later chapter.</span></span></cite></p></li>
 	<li><p><cite><span style="font-style: normal">the definition of the
 	control flow of the application. Default this flow will be defined
 	through a XML file ‘</span></cite><cite><span style="font-style: normal"><b>controls.xml’
