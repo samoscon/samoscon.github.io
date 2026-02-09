@@ -26,31 +26,9 @@ root folder of the client project with the following content:</p>
 </p><br/>
 <p>With this redirect, your url request can have the structure [domainname]/[pathname]?[parameters] (e.g. “app.myticketing.com/admin” or “app.myticketing.com/editMember?id=234585”).</p>
 <p class="h3 text-primary mt-3">The Controller::Run</p>
-<p><cite><span style="font-style: normal">When the index.php
-initiates the Controller to “run”, The Controller will execute 2
-distinct stages. In a first stage, the Controller will “initiate
-the application”. This initialisation is executed in 2 different
-steps, i.e. </span></cite>
-</p>
-
-	<p><cite><span style="font-style: normal">1. the set-up of global
-	variables and the passwords for your database, mailserver,
-	paymentsystem (in the example based on mollie), Google Wallet
-	Tickets API, etc., etc.  . This set-up is done through a file
-	‘</span></cite><cite><span style="font-style: normal"><span style="font-weight: normal">app_options.ini’
-	which is located in a folder ‘</span></span></cite><cite><span style="font-style: normal"><b>/config</b></span></cite><cite><span style="font-style: normal"><span style="font-weight: normal">’
-	in the root folder of your project. The content of this file will be
-	discussed in more detail in a later chapter. The app_options;ini file should contain at least the following lines:</span></span></cite></p>
-	<p><cite><span style="font-style: normal">2. the definition of the
-	control flow of the application. Default this flow will be defined
-	through a XML file ‘</span></cite><cite><span style="font-style: normal"><b>controls.xml’
-	</b></span></cite><cite><span style="font-style: normal"><span style="font-weight: normal">which
-	is located i</span></span></cite><cite><span style="font-style: normal"><span style="font-weight: normal">n
-	a folder ‘</span></span></cite><cite><span style="font-style: normal"><b>/</b></span></cite><cite><span style="font-style: normal"><b>MVCFramework</b></span></cite><cite><span style="font-style: normal"><span style="font-weight: normal">’
-	in the root folder of your project. </span></span></cite><cite><span style="font-style: normal"><span style="font-weight: normal">For
-	now, it is sufficient to understand </span></span></cite><cite><span style="font-style: normal"><span style="font-weight: normal">that
-	the file should at a minimum contain </span></span></cite><cite><span style="font-style: normal"><span style="font-weight: normal">something
-	like</span></span></cite><cite><span style="font-style: normal"><span style="font-weight: normal">:</span></span></cite></p>
+<p>When the index.php initiates the Controller to “run”, The Controller will execute 2 distinct stages. In a first stage, the Controller will “initiate the application”. This initialisation is executed in 2 different steps, i.e. </p>
+<p>1. the set-up of global variables and the passwords for your database, mailserver, paymentsystem (in the example based on mollie), Google Wallet Tickets API, etc., etc.  . This set-up is done through a file <i></i>app_options.ini</i> which is located in a folder <b>/config</b> in the root folder of your project. The content of this file will be	discussed in more detail in a later chapter. The app_options.ini file should contain at least the following lines:</p>
+<p>2. the definition of the	control flow of the application. Default this flow will be defined through a XML file <b>controls.xml</b> which	is located in a folder <b>MVCFramework</b> in the root folder of your project. For now, it is sufficient to understand that the file should at a minimum contain something like:</span></span></cite></p>
 
 <p><br/>
 <br/>
