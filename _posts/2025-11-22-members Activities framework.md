@@ -21,14 +21,7 @@ handle the request.
 root folder of the client project with the following content:</p>
 <p><img src="/assets/IndexFile.gif" name="Image3" align="center" width="60%" height="60%" border="1"/>
 </p><br/>
-<p>Each url request to your
-domain should be directed to the index.php file followed by a path
-name. This means that a url should be constructed as
-[domainname].index.php/[pathname]?[parameters]. You can avoid the use
-of the index.php in each url by parameterizing your webhost server
-access file. In an Apache 2 server, this would mean you can add an
-<b>.htaccess</b> file in the root
-folder of your project with the following content included:</p>
+<p>Each url request to your domain should be directed to the index.php file followed by a path name. This means that a url should be constructed as [domainname].index.php/[pathname]?[parameters]. You can avoid the use of the index.php in each url by parameterizing your webhost server access file. In an Apache 2 server, this would mean you can add an <b>.htaccess</b> file in the root folder of your project with the following content included:</p>
 <p><img src="/assets/htaccess.gif" name="Image" align="center" width="60%" height="60%" border="1"/>
 </p><br/>
 <p>With this redirect, your url request can have the structure [domainname]/[pathname]?[parameters] (e.g. “app.myticketing.com/admin” or “app.myticketing.com/editMember?id=234585”).</p>
@@ -47,7 +40,10 @@ steps, i.e. </span></cite>
 	‘</span></cite><cite><span style="font-style: normal"><span style="font-weight: normal">app_options.ini’
 	which is located in a folder ‘</span></span></cite><cite><span style="font-style: normal"><b>/config</b></span></cite><cite><span style="font-style: normal"><span style="font-weight: normal">’
 	in the root folder of your project. The content of this file will be
-	discussed in more detail in a later chapter</span></span></cite></p></li>
+	discussed in more detail in a later chapter.</span></span></cite></p>
+	<p>The app_options.ini should contain at least following lines:</p>
+	<p><img src="/assets/app_options_basic.jpg" name="Image3" align="center" width="60%" height="60%" border="1"/>
+</p><br/></li>
 	<li><p><cite><span style="font-style: normal">the definition of the
 	control flow of the application. Default this flow will be defined
 	through a XML file ‘</span></cite><cite><span style="font-style: normal"><b>controls.xml’
