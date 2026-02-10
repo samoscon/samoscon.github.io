@@ -30,7 +30,7 @@ author: dirkvm
 <p><img src="/assets/app_options_basic.jpg" name="Image4" align="center" width="60%" height="60%" border="1"/></p><br/>
 
 <p>2. the definition of the	control flow of the application. Default this flow will be defined through a XML file <b>controls.xml</b> which	is located in a folder <b>MVCFramework</b> in the root folder of your project. (Note that the name of the file and folder have been set in the config section of app_options.ini). For now, it is sufficient to understand that the controls file should at a minimum contain something like:</p>
-<p><img src="/assets/app_options_basic.jpg" name="Image5" align="center" width="60%" height="60%" border="1"/></p><br/>
+<p><img src="/assets/controls_file_basic.jpg" name="Image5" align="center" width="60%" height="60%" border="1"/></p><br/>
 
 <p><cite><span style="font-style: normal"><span style="font-weight: normal">This
 short controls.xml example shows you how the control flow binds </span></span></cite><cite><span style="font-style: normal"><span style="font-weight: normal">a</span></span></cite><cite><span style="font-style: normal"><span style="font-weight: normal">
