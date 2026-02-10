@@ -32,30 +32,9 @@ author: dirkvm
 <p>2. the definition of the	control flow of the application. Default this flow will be defined through a XML file <b>controls.xml</b> which	is located in a folder <b>MVCFramework</b> in the root folder of your project. (Note that the name of the file and folder have been set in the config section of app_options.ini). For now, it is sufficient to understand that the controls file should at a minimum contain something like:</p>
 <p><img src="/assets/controls_file_basic.jpg" name="Image5" align="center" width="60%" height="60%" border="1"/></p><br/>
 
-<p><cite><span style="font-style: normal"><span style="font-weight: normal">This
-short controls.xml example shows you how the control flow binds </span></span></cite><cite><span style="font-style: normal"><span style="font-weight: normal">a</span></span></cite><cite><span style="font-style: normal"><span style="font-weight: normal">
-path “/” to 1 Command class “DefaultCommand” and 1 view
-“defaultView”.  In the  example this defaultView is a login
-screen. The DefaultCommand will </span></span></cite><cite><span style="font-style: normal"><span style="font-weight: normal">in
-this case </span></span></cite><cite><span style="font-style: normal"><span style="font-weight: normal">be
-checking the username/password combination and will return a status
-depending on the result of the test. If the result is OK, the control
-flow will forward the user to a new path (i.e. a new command and
-view) named ‘example’. </span></span></cite><cite><span style="font-style: normal"><span style="font-weight: normal">If
-not, the control flow will go to an error screen. This is basically
-how the control flow works. </span></span></cite><cite><span style="font-style: normal"><span style="font-weight: normal">The
-methodology and </span></span></cite><cite><span style="font-style: normal"><span style="font-weight: normal">full
-</span></span></cite><cite><span style="font-style: normal"><span style="font-weight: normal">syntax
-to define the control flow </span></span></cite><cite><span style="font-style: normal"><span style="font-weight: normal">will
-be discussed in more detail in a later chapter. </span></span></cite>
-</p>
-<p><cite><span style="font-style: normal"><span style="font-weight: normal">Once
-the application has been initialized, the Controller will in a second
-stage “handle the Request”, i.e. :</span></span></cite>
-</p>
-<p>
-	1. the	Command class that is linked to the path in the url request will be	executed to create a Response. Commands in your client project must inherit from a
-	Command class in the Controllerframework and therefore need at least the following content:
-</p>
+<p>This short controls.xml example shows you how the control flow binds a path “/” to 1 Command class “DefaultCommand” and 1 view “defaultView”. The methodology and full syntax to define the control flow will be discussed in more detail in a later chapter.</p>
+
+<p>Once the application has been initialized, the Controller will in a second stage “handle the Request”, i.e. :</p>
+<p>	1. the	Command class that is linked to the path in the url request will be	executed to create a Response. Commands in your client project must inherit from a Command class in the Controllerframework and therefore need at least the following content:</p>
 <p><img src="/assets/ExampleCommand.gif" name="Image2" align="center" width="60%" height="60%" border="1"/>
 </p><br/>
