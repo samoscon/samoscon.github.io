@@ -131,7 +131,7 @@ errors to visitors.</div>
 Composer installs the framework itself under <code>vendor/</code>.</p>
 
 <h2><i>Note: Complete minimal example</i></h2>
-<p>A ready-to-copy version of the all files used in this tutorial is supplied as a ZIP archive
+<p>A ready-to-copy version of the all files used in this tutorial is supplied as <a href="/assets/controller-framework-1.0.30-basic-example.zip">a ZIP archive</a>
 alongside this guide. It contains the same application structure and code shown below.</p>
 
 <h2 id="composer">4. Install the framework with Composer</h2>
