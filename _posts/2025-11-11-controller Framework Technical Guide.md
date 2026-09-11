@@ -88,7 +88,7 @@ footer { border-top:1px solid var(--line); margin-top:50px; padding-top:20px; co
 <p class="lead">PHPDoc-style technical documentation for framework developers and maintainers building client applications on top of Controller Framework 1.0.30.</p>
 <p><strong>Source basis:</strong> Release 30 source code, Composer definition and supplied example application. This document describes the actual class hierarchy and object relationships in Release 30 rather than a generic MVC framework.</p>
 <p><strong>Related documentation:</strong>
-<a href="https://samoscon.github.io/2025/11/22/controller-Framework.html">Controller Framework 1.0.30 — Client Application Developer Guide</a>
+<a href="https://samoscon.github.io/2026/09/11/controller-Framework-Client-Application-Developer-Guide.html">Controller Framework 1.0.30 — Client Application Developer Guide</a>
 contains the practical, application-oriented usage guide.</p>
 </header>
 
