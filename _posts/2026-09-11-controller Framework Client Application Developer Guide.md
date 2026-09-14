@@ -766,4 +766,114 @@ $activity->getId();</code></pre>
 
 <h3>14.4 findAll() and free SQL</h3>
 
-<p><code>findAll(string $selectclause = '')</code> intentionally permits an application-defined
+<p><code>findAll(string $selectclause = '')</code> intentionally permits an application-defined SQL fragment. This is a flexible API, but it is not a parameterized value.</p>
+
+<pre><code>$members = Member::findAll( "WHERE active = 1 ORDER BY name" );</code></pre>
+
+<div class="warning"> <strong>Security rule:</strong> never build this clause directly from <code>$_GET</code>, <code>$_POST</code>, cookies or other untrusted input. <code>PDO::prepare()</code> cannot make a SQL fragment safe when the fragment itself is concatenated into the SQL statement. Validate/whitelist application-controlled choices before constructing the clause. </div>
+
+<h2 id="members">15. Member model</h2>
+
+<p>The framework provides a generic <code>controllerframework\members\Member</code> abstraction and <code>MemberMapper</code>. A client application normally subclasses these classes.</p>
+
+<pre><code>namespace model; class Member extends \controllerframework\members\Member { public function initiatePassword(string $pwd = ''): string { return '...'; } }</code></pre>
+
+<pre><code>namespace model; final class MemberMapper extends \controllerframework\members\MemberMapper { }</code></pre>
+
+<h3>15.1 Member type implementations</h3>
+
+<p>Membership-specific behavior can be implemented through subclasses such as <code>Member_RGLR</code>. The classification stored in the member row determines the concrete type implementation.</p>
+
+<pre><code>class Member_RGLR extends \controllerframework\members\MemberTypeImplementation { public function getYearlyParticipationFee( \model\Member $member ): int { return 350; } }</code></pre>
+
+<h2 id="mail">16. Mail</h2>
+
+<p>The framework uses Symfony Mailer. SMTP settings are supplied through the global configuration constants.</p>
+
+<h3>16.1 Immediate mail</h3>
+
+<pre><code>\controllerframework\mail\Mailer::sendMail( 'Subject', '&lt;p&gt;Hello&lt;/p&gt;', 'one@example.org, two@example.org', 'recipient@example.org' );</code></pre>
+
+<p>The framework constructs an HTML message, adds the configured sender/reply-to information and sends through the configured SMTP transport.</p>
+
+<h3>16.2 Mail queue</h3>
+
+<p><code>MailQueue::add()</code> stores a mail in the <code>mail_queue</code> table. <code>MailerQueue</code> can then be used by an application-side scheduled process to send queued messages.</p>
+
+<pre><code>$id = \controllerframework\mail\MailQueue::add( 'Newsletter', '&lt;p&gt;Hello members&lt;/p&gt;', 'website@example.org', 'alice@example.org, bob@example.org' );</code></pre>
+
+<p>The supplied SQL schema includes queue status, attempts and timestamps so the client application can implement a scheduled queue processor. <code>MailQueue::add()</code> only stores the message; <code>MailerQueue::sendMail()</code> is the low-level helper used by such a processor to send one queued message.</p>
+
+<div class="warning"> <strong>SMTP credentials:</strong> keep mail credentials in protected configuration and use the encryption/port required by the SMTP provider. Do not commit real passwords to source control. </div>
+
+<h2 id="audit">17. Audit tracing</h2>
+
+<p>The framework provides <code>AuditableItem</code> and <code>AuditableItemTrait</code>. A class can implement the interface and use the trait, then call <code>notifyAuditTrace()</code>.</p>
+
+<pre><code>class MyService implements \controllerframework\audit\AuditableItem { use \controllerframework\audit\AuditableItemTrait; public function updateSomething(): void { $this->notifyAuditTrace( __FUNCTION__, ['important application event'] ); // ... } }</code></pre>
+
+<p><code>AuditTrace</code> writes to <code>logfile.txt</code> under the configured <code>loggingpath</code>. Make sure that directory is writable by PHP and is not unnecessarily exposed as a public download location.</p>
+
+<h2 id="errors">18. Error handling</h2>
+
+<p><code>Controller::run()</code> registers <code>ErrorHandler</code>. The handler distinguishes CLI execution from web execution and uses the configured environment.</p>
+
+<table> <tr><th>Environment</th><th>Behavior</th></tr> <tr><td><code>development</code></td><td>Displays a more detailed exception message, file and line information.</td></tr> <tr><td><code>production</code></td><td>Returns HTTP 500 and displays a generic error message.</td></tr> </table>
+
+<p>Application code should still handle expected business errors through Command statuses such as <code>CMD_ERROR</code> rather than throwing exceptions for normal user input.</p>
+
+<h2 id="security">19. Security rules for client developers</h2>
+
+<h3>19.1 Treat all client input as untrusted</h3>
+
+<p>This includes GET parameters, POST fields, cookies, HTTP headers and values returned by external clients.</p>
+
+<h3>19.2 SQL</h3>
+
+<ul> <li>Use prepared statements and bound parameters for values.</li> <li>Do not concatenate user input into SQL.</li> <li>Do not place user input in <code>findAll()</code>'s free SQL clause.</li> <li>Keep Mapper table names and allowed update fields application-controlled.</li> </ul>
+
+<h3>19.3 HTML output</h3>
+
+<p>Escape untrusted values when inserting them into HTML. The framework example uses <code>htmlspecialchars(..., ENT_QUOTES, 'UTF-8')</code>.</p>
+
+<h3>19.4 HTTP headers and redirects</h3>
+
+<ul> <li>Do not use arbitrary user input as a redirect destination.</li> <li>Do not use arbitrary user input as a download filename.</li> <li>Prevent CR/LF and other header control characters in filenames.</li> <li>Keep payment callback/redirect URLs under application control.</li> </ul>
+
+<p>When a protected command is requested without a valid login, the framework temporarily stores the original application path in the <code>originalPath</code> cookie so that the application can return the user to the requested path after authentication. Client applications should not populate or modify this cookie themselves. Redirect targets must remain under application control.</p>
+
+<h3>19.5 Access tokens</h3>
+
+<ul> <li>Use a distinct purpose for each protected operation.</li> <li>Bind the token to the relevant application identifier.</li> <li>Validate the token before performing the protected operation.</li> <li>Keep the server-side token secret confidential.</li> <li>Transmit access tokens only over HTTPS.</li> <li>Do not log access tokens.</li> <li>Do not treat an access token as a replacement for authentication or authorization.</li> </ul>
+
+<p>Remember that the framework's <code>AccessToken</code> implementation does not provide expiration, one-time use or revocation. Applications requiring those properties must implement them separately.</p>
+
+<h3>19.6 Sessions</h3>
+
+<ul> <li>The framework starts sessions through <code>LoginManager</code>.</li> <li>Session cookies are configured as Secure, HttpOnly and SameSite=Lax.</li> <li>Session IDs are regenerated after successful authentication.</li> <li>Do not expose or copy session identifiers into application data.</li> </ul>
+
+<h3>19.7 CSRF</h3>
+
+<p>Validate CSRF tokens for state-changing POST operations.</p>
+
+<h3>19.8 Production</h3>
+
+<ul> <li>Set <code>environment=production</code>.</li> <li>Disable <code>display_errors</code>.</li> <li>Protect <code>app_options.ini</code>.</li> <li>Protect logs and uploaded/private files.</li> <li>Use HTTPS so Secure cookies and credentials are protected in transit.</li> </ul>
+
+<h2 id="workflow">20. Recommended development workflow</h2>
+
+<ol> <li>Install the framework with Composer.</li> <li>Copy/adapt the example application structure.</li> <li>Create and protect <code>config/app_options.ini</code>.</li> <li>Configure the database and mail transport.</li> <li>Set up the member table and the remember-token table if login persistence is required.</li> <li>Define application paths in <code>controls.xml</code>.</li> <li>Create a Command for each application use case.</li> <li>Select the correct login level in each protected Command.</li> <li>Put command results into the Request.</li> <li>Select a view or data renderer in <code>controls.xml</code>.</li> <li>Use DomainObject/Mapper classes for persistent application entities.</li> <li>Add CSRF validation to state-changing forms.</li> <li>Use <code>AccessToken</code> where an additional token-based protection layer is required.</li> <li>Validate access tokens before executing the protected operation.</li> <li>Test normal login, logout, inactivity timeout and remember-me.</li> <li>Run Composer validation and security auditing before deployment.</li> <li>Set production configuration and verify that no credentials or development diagnostics are exposed.</li> </ol>
+
+<h2 id="reference">21. Quick reference</h2>
+
+<table> <tr><th>Task</th><th>Typical API/configuration</th></tr> <tr><td>Start framework</td><td><code>Controller::run()</code></td></tr> <tr><td>Get Registry</td><td><code>Registry::instance()</code></td></tr> <tr><td>Get request</td><td><code>Registry::instance()-&gt;getRequest()</code></td></tr> <tr><td>Get database</td><td><code>Registry::instance()-&gt;getDb()</code></td></tr> <tr><td>Get LoginManager</td><td><code>Registry::instance()-&gt;getLoginManager()</code></td></tr> <tr><td>Read/write request data</td><td><code>$request-&gt;get()</code> / <code>$request-&gt;set()</code></td></tr> <tr><td>Successful command</td><td><code>return self::CMD_OK;</code></td></tr> <tr><td>Error command</td><td><code>return self::CMD_ERROR;</code></td></tr> <tr><td>Public command</td><td><code>new NoLoginRequired()</code></td></tr> <tr><td>User command</td><td><code>new UserLogin()</code></td></tr> <tr><td>Admin command</td><td><code>new AdminLogin()</code></td></tr> <tr><td>Generate access token</td><td><code>AccessToken::generate($purpose, $identifier)</code></td></tr> <tr><td>Validate access token</td><td><code>AccessToken::validate($purpose, $identifier, $token)</code></td></tr> <tr><td>Load one object</td><td><code>MyObject::find($id)</code></td></tr> <tr><td>Load collection</td><td><code>MyObject::findAll()</code></td></tr> <tr><td>Update object</td><td><code>$object-&gt;update([...])</code></td></tr> <tr><td>Delete object</td><td><code>$object-&gt;delete()</code></td></tr> <tr><td>CSRF token</td><td><code>$this-&gt;getCsrfToken()</code></td></tr> <tr><td>Validate CSRF</td><td><code>$this-&gt;validateCsrfToken($request)</code></td></tr> <tr><td>Immediate mail</td><td><code>Mailer::sendMail()</code></td></tr> <tr><td>Queue mail</td><td><code>MailQueue::add()</code></td></tr> </table>
+
+<h2>22. Final design principle</h2>
+
+<p>The Controller Framework deliberately separates <strong>framework infrastructure</strong> from <strong>application responsibility</strong>. The framework provides routing, command execution, rendering, sessions, authentication, database mapping, CSRF support, access tokens, mail and audit facilities. The client application remains responsible for its domain rules, authorization details beyond the supplied login levels, validation of business input and the safe use of flexible APIs.</p>
+
+<div class="success"> <strong>Release 31 baseline:</strong> build application code around the framework APIs described here, keep untrusted input out of SQL fragments and HTTP headers, protect state-changing requests with CSRF tokens, use access tokens as an additional protection layer where appropriate, and deploy with production error handling and protected configuration. </div>
+
+<footer> <p>Controller Framework 1.0.31 — Client Application Developer Guide</p> <p>This document describes the APIs and example architecture present in Release 31. Application-specific frameworks layered on top of the Controller Framework may add additional commands, models, renderers, database tables and conventions.</p> </footer>
+
+</main> </body> </html>
