@@ -857,7 +857,7 @@ The token must be validated before the protected operation is performed.
 </div>
 
 <h4>Example</h4>
-<pre><code>use controllerframework\\security\\AccessToken;
+<pre><code>use controllerframework\security\AccessToken;
 
 $token = AccessToken::generate(
     'mollie-order',
@@ -869,7 +869,7 @@ if (!AccessToken::validate(
     (string) $orderid,
     $token
 )) {
-    throw new \\RuntimeException(
+    throw new \RuntimeException(
         'Invalid access token.'
     );
 }</code></pre>
