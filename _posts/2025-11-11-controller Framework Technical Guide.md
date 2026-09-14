@@ -816,7 +816,7 @@ protected function validateCsrfToken(
 
 <p>The helper reads <code>Csrf::TOKEN_PARAMETER</code> from the Request. Client Commands performing state-changing POST operations should validate it before processing the operation.</p>
 
-<h3><code>controllerframework\\security\\AccessToken</code></h3>
+<h3><code>controllerframework\security\AccessToken</code></h3>
 <pre><code>class AccessToken
 {
     public static function generate(
@@ -1155,6 +1155,7 @@ RenderComponent::render()</code></pre>
 <table>
 <tr><th>Class</th><th>Role</th></tr>
 <tr><td><code>Csrf</code></td><td>Session-based CSRF token generation and validation.</td></tr>
+<tr><td><code>AccessToken</code></td><td>Provides a token-based mechanism for protecting specific URLs</td></tr>
 </table>
 
 <h3><code>controllerframework\mail</code></h3>
