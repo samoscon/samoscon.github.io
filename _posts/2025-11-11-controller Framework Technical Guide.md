@@ -121,7 +121,7 @@ request, rendering, authentication, security, domain/database, and infrastructur
 parts of the framework. The diagram is intended as an orientation map; the detailed
 API and class relationships are documented in the sections that follow.
 </p>
-<figure class="uml-overview"><img src="" alt="Controller Framework 1.0.31 UML class diagram overview"><figcaption>Figure 1 — Controller Framework 1.0.31 UML class diagram overview</figcaption></figure>
+<figure class="uml-overview"><img src="assets/Class Diagram Controller Framework.png" alt="Controller Framework 1.0.31 UML class diagram overview"><figcaption>Figure 1 — Controller Framework 1.0.31 UML class diagram overview</figcaption></figure>
 <p class="note">
 <strong>Reading the diagram:</strong> inheritance is shown through the class
 hierarchies, while the main framework collaborations are grouped by functional area.
