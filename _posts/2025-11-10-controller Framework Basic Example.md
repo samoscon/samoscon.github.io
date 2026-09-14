@@ -8,7 +8,7 @@ author: dirkvm
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Controller Framework 1.0.30 — Basic Implementation User Guide</title>
+<title>Controller Framework 1.0.31 — Basic Implementation User Guide</title>
 <style>
 :root { --text:#1f2937; --muted:#64748b; --border:#dbe2ea; --panel:#f8fafc; --code:#111827; }
 * { box-sizing:border-box; }
@@ -41,11 +41,11 @@ footer { margin-top:60px; padding-top:20px; border-top:1px solid var(--border); 
 <body>
 <main>
 
-<h1>Controller Framework 1.0.30<br>Basic Implementation User Guide</h1>
+<h1>Controller Framework 1.0.31<br>Basic Implementation User Guide</h1>
 <p class="lead">A step-by-step tutorial that starts with an empty PHP application and ends with a login-protected screen displaying:</p>
 <p><strong>Hi [name of User], welcome to our login protected environment.</strong></p>
 <p>and a <strong>Logout</strong> button.</p>
-<p class="meta">Based on Controller Framework 1.0.30 and its Application Controller implementation.</p>
+<p class="meta">Based on Controller Framework 1.0.31 and its Application Controller implementation.</p>
 
 <div class="success">
 <strong>What you will build</strong><br>
@@ -140,7 +140,7 @@ alongside this guide. It contains the same application structure and code shown 
     "name": "example/controller-framework-app",
     "require": {
         "php": "^8.3",
-        "samoscon/controller-framework": "^1.0.30"
+        "samoscon/controller-framework": "^1.0.31"
     }
 }</code></pre>
 <p>Run:</p>
@@ -626,7 +626,7 @@ Declare the required login strategy in the Command and let the framework's
 </div>
 
 <footer>
-Controller Framework 1.0.30 — Basic Implementation User Guide<br>
+Controller Framework 1.0.31 — Basic Implementation User Guide<br>
 Prepared as a practical client-application tutorial.
 </footer>
 
