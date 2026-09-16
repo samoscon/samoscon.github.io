@@ -3,12 +3,6 @@ layout: post
 author: dirkvm
 ---
 
----
-
-layout: post
-author: dirkvm
---------------
-
 <html lang="en">
 <head>
 <meta charset="utf-8">
