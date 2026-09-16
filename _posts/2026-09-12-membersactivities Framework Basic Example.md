@@ -112,7 +112,7 @@ footer{margin-top:60px;border-top:1px solid var(--border);padding-top:20px;color
   <p>
     The complete example application is available as a ZIP archive, including the
     folder structure and all underlying example files:
-    <a href="#">Download the Example Folder Structure and Files (ZIP)</a>.
+    <a href="/assets/MembersActivities-Framework-1.0.30-Basic-Example-Folder-Structure.zip">Download the Example Folder Structure and Files (ZIP)</a>.
   </p>
   <p>
     The database setup is provided separately and is <strong>not included in the ZIP archive</strong>:
