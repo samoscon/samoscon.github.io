@@ -116,7 +116,7 @@ footer{margin-top:60px;border-top:1px solid var(--border);padding-top:20px;color
   </p>
   <p>
     The database setup is provided separately and is <strong>not included in the ZIP archive</strong>:
-    <a href="#">Download DatabaseSetup.sql</a>.
+    <a href="/assets/MembersActivities-Framework-1.0.30-Basic-Example-DatabaseSetup.sql">Download DatabaseSetup.sql</a>.
   </p>
 </div>
 
