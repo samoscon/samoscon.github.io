@@ -66,6 +66,7 @@ footer{margin-top:60px;border-top:1px solid var(--border);padding-top:20px;color
 <li><a href="#copy">Create the Application</a></li>
 <li><a href="#composer">Install Dependencies</a></li>
 <li><a href="#database">Create the Database</a></li>
+<li><a href="#first-user">Create the First Administrator</a></li>
 <li><a href="#config">Configure the Application</a></li>
 <li><a href="#index">Understand index.php</a></li>
 <li><a href="#autoload">Understand Client Autoloading</a></li>
@@ -112,11 +113,11 @@ footer{margin-top:60px;border-top:1px solid var(--border);padding-top:20px;color
   <p>
     The complete example application is available as a ZIP archive, including the
     folder structure and all underlying example files:
-    <a href="/assets/MembersActivities-Framework-1.0.30-Basic-Example-Folder-Structure.zip">Download the Example Folder Structure and Files (ZIP)</a>.
+    <a href="#">Download the Example Folder Structure and Files (ZIP)</a>.
   </p>
   <p>
     The database setup is provided separately and is <strong>not included in the ZIP archive</strong>:
-    <a href="/assets/MembersActivities-Framework-1.0.30-Basic-Example-DatabaseSetup.sql">Download DatabaseSetup.sql</a>.
+    <a href="#">Download DatabaseSetup.sql</a>.
   </p>
 </div>
 
@@ -221,7 +222,57 @@ footer{margin-top:60px;border-top:1px solid var(--border);padding-top:20px;color
 <p>Then import the supplied SQL script using your preferred database administration tool.</p>
 <div class="note"><strong>For an existing application:</strong> do not simply import the reference schema over a production database. Back up the database and apply controlled schema changes.</div>
 
-<h2 id="config">7. Configure the Application</h2>
+
+<h2 id="first-user">7. Create the First Administrator</h2>
+<p>After importing <code>DatabaseSetup.sql</code>, the database contains the required tables,
+but the application still needs at least one member account that can log in as an administrator.
+This is especially important for the example because the default configuration uses
+<code>_MINLEVELTOLOGIN='A'</code>, which means that the login environment requires an administrator account.</p>
+
+<div class="step"><strong>Step 1.</strong> Generate a password hash using PHP.</div>
+<pre><code>php -r "echo password_hash('Demo123', PASSWORD_DEFAULT), PHP_EOL;"</code></pre>
+
+<p>Copy the generated hash and use it in the <code>password</code> field of the first member.</p>
+
+<div class="step"><strong>Step 2.</strong> Insert the first administrator into the <code>member</code> table.</div>
+<pre><code>INSERT INTO member
+    (classification, name, lastname, email, role, password, ownpwd, active)
+VALUES
+    (
+        'RGLR',
+        'Demo',
+        'Administrator',
+        'admin@example.com',
+        'A',
+        '[PASTE THE PASSWORD HASH HERE]',
+        1,
+        1
+    );</code></pre>
+
+<p>The important values for the initial administrator are:</p>
+<table>
+<tr><th>Field</th><th>Value</th><th>Purpose</th></tr>
+<tr><td><code>classification</code></td><td><code>RGLR</code></td><td>Uses the regular member type implementation supplied by the example.</td></tr>
+<tr><td><code>role</code></td><td><code>A</code></td><td>Identifies the member as an administrator for the administrator login strategy.</td></tr>
+<tr><td><code>password</code></td><td>PHP <code>password_hash()</code> result</td><td>Stores the password as a secure password hash rather than plain text.</td></tr>
+<tr><td><code>ownpwd</code></td><td><code>1</code></td><td>Indicates that the member has their own password.</td></tr>
+<tr><td><code>active</code></td><td><code>1</code></td><td>Activates the member account.</td></tr>
+</table>
+
+<div class="note"><strong>Security:</strong> <code>Demo123</code> is only an example password.
+Generate your own password hash and use a strong, unique password for any real installation.
+Never store the plain-text password in the database.</div>
+
+<p>For a real application, replace the example name and email address with the details of the
+administrator who will perform the initial setup. After the first successful login, use the
+application's member administration facilities to create the remaining members and administrators.</p>
+
+<div class="note"><strong>Why this step is necessary:</strong> the example's configuration uses
+<code>_MINLEVELTOLOGIN='A'</code>, so without an active administrator member there is no account
+that can satisfy the configured administrator login requirement. The administration commands
+themselves also use the framework's <code>AdminLogin</code> strategy.</div>
+
+<h2 id="config">8. Configure the Application</h2>
 <p>Edit <code>config/app_options.ini</code>. The example contains placeholders such as:</p>
 <pre><code>_APPDIR=https://[(sub)domeinnaam]/
 _HOMEPAGE=https://[your client homepage]
@@ -234,26 +285,26 @@ _DBUSER=[database username]
 _DBPASSWORD="[database password]"
 _DBNAME=[database name]
 _DBHOST=localhost</code></pre>
-<h3>7.1 Application identity</h3>
+<h3>8.1 Application identity</h3>
 <pre><code>APP=BM_test
 _LOGO=assets/[Your logo].jpg</code></pre>
 <p>Replace these with the identity of your own application.</p>
-<h3>7.2 Login policy</h3>
+<h3>8.2 Login policy</h3>
 <pre><code>_MINLEVELTOLOGIN='A'</code></pre>
 <p>The example uses <code>A</code> to indicate an administrator-only login environment. The alternative <code>U</code> allows administrators and members to log in as users.</p>
-<h3>7.3 Payment policy</h3>
+<h3>8.3 Payment policy</h3>
 <pre><code>_WTALLOWED='Y'</code></pre>
 <p>This controls whether wire transfer is available as an alternative to online payment.</p>
-<h3>7.4 Mollie</h3>
+<h3>8.4 Mollie</h3>
 <pre><code>_MOLLIECONFIG="test_[your mollie key]"</code></pre>
 <p>Use a test key during development and a live key only in a properly secured production configuration.</p>
-<h3>7.5 Google Wallet</h3>
+<h3>.5 Google Wallet</h3>
 <pre><code>_WALLETORIGIN=...
 _WALLETCREDENTIALS=config/[your keyfile].json
 _WALLETISSUERID=...</code></pre>
 <p>Google Wallet is optional. If it is not used, the corresponding configuration can remain disabled/empty according to the application's conventions.</p>
 
-<h2 id="index">8. Understand index.php</h2>
+<h2 id="index">9. Understand index.php</h2>
 <p>The example's entry point is deliberately small:</p>
 <pre><code>&lt;?php
 
@@ -300,7 +351,7 @@ try {
               ▼
         framework request processing</div>
 
-<h2 id="autoload">9. Understand Client Autoloading</h2>
+<h2 id="autoload">10. Understand Client Autoloading</h2>
 <p>The example automatically maps namespaced client classes below <code>MVCFramework/</code>.</p>
 <p>For example:</p>
 <pre><code>\model\Activity_RGLR</code></pre>
@@ -312,7 +363,7 @@ try {
 <pre><code>MVCFramework/commands/user/PublicActivityCommand.php</code></pre>
 <p>This makes it possible for the client application to provide concrete classes expected by the abstract framework classes.</p>
 
-<h2 id="controls">10. Understand controls.xml</h2>
+<h2 id="controls">11. Understand controls.xml</h2>
 <p><code>MVCFramework/controls.xml</code> connects URL paths to commands and views.</p>
 <p>The root route is:</p>
 <pre><code>&lt;command path="/" class="\commands\DefaultCommand"&gt;
@@ -344,7 +395,7 @@ Payment confirmation
         ▼
 /paymentConfirmation</code></pre>
 
-<h2 id="default">11. The Default Command</h2>
+<h2 id="default">12. The Default Command</h2>
 <p>The example's <code>DefaultCommand</code> is a client CommandDecorator around the framework's default command.</p>
 <pre><code>class DefaultCommand
     extends \controllerframework\controllers\CommandDecorator
@@ -372,7 +423,7 @@ Payment confirmation
 }</code></pre>
 <p>The client changes only what it needs: here, the page title.</p>
 
-<h2 id="models">12. Create Client Model Classes</h2>
+<h2 id="models">13. Create Client Model Classes</h2>
 <p>The example supplies concrete client classes for the abstract MembersActivities models.</p>
 <h3>Activity</h3>
 <pre><code>namespace model;
@@ -408,7 +459,7 @@ class Payment
 }</code></pre>
 <p>Most of these classes are intentionally almost empty. Their existence allows the framework's abstract model architecture to be specialized by the client.</p>
 
-<h2 id="types">13. Activity, Member and Costitem Types</h2>
+<h2 id="types">14. Activity, Member and Costitem Types</h2>
 <p>The example demonstrates classification-specific type implementations.</p>
 <h3>Activity_RGLR</h3>
 <pre><code>class Activity_RGLR
@@ -437,7 +488,7 @@ Member_PRTN</code></pre>
 <p>These extend <code>MemberTypeImplementation</code> and demonstrate how client-specific member rules can be added.</p>
 <p>For example, <code>Member_RGLR</code> implements a yearly participation fee, while <code>Member_PRTN</code> contains partner-specific logic.</p>
 
-<h2 id="validation">14. Subscription Validation Strategies</h2>
+<h2 id="validation">15. Subscription Validation Strategies</h2>
 <p>The example contains three strategies:</p>
 <pre><code>SubscriptionValidationPublic
 SubscriptionValidationUser
@@ -473,7 +524,7 @@ if($member-&gt;subscriptionuntil &lt;
 return $this-&gt;errorcode(0);</code></pre>
 <p>The admin strategy extends the user strategy and deliberately applies different rules.</p>
 
-<h2 id="decorator">15. CommandDecorator Example</h2>
+<h2 id="decorator">16. CommandDecorator Example</h2>
 <p>The example's <code>PublicActivityCommand</code> illustrates the recommended extension pattern.</p>
 <pre><code>class PublicActivityCommand
     extends \controllerframework\controllers\CommandDecorator
@@ -513,7 +564,7 @@ return $this-&gt;errorcode(0);</code></pre>
 }</code></pre>
 <p>The decorator performs client-specific work and then delegates the generic activity operation to the MembersActivities command.</p>
 
-<h2 id="activity">16. Public Activity Example</h2>
+<h2 id="activity">17. Public Activity Example</h2>
 <p>The route is:</p>
 <pre><code>/activity?id=123</code></pre>
 <p>The client decorator validates the ID, retrieves the activity and determines whether the activity's type requires a seat map.</p>
@@ -534,7 +585,7 @@ membersactivities\commands\user\PublicActivityCommand
 views/user/activity.php</div>
 <p>The view renders activity information, cost items and, when enabled, the seat-map interface.</p>
 
-<h2 id="payment">17. Payment Example</h2>
+<h2 id="payment">18. Payment Example</h2>
 <p>The example uses a separate <code>CreatePaymentCommand</code> decorator. It currently delegates without adding extra logic.</p>
 <pre><code>public function doExecuteDecorator(
     \controllerframework\registry\Request $request
@@ -544,7 +595,7 @@ views/user/activity.php</div>
 <p>The wrapped framework command performs the generic payment creation.</p>
 <p>This is a useful template: client code can remain empty until application-specific behaviour is actually required.</p>
 
-<h2 id="mollie">18. Mollie Example</h2>
+<h2 id="mollie">19. Mollie Example</h2>
 <p>The example's <code>PaymentToMollieCommand</code> extends the framework Mollie command.</p>
 <pre><code>class PaymentToMollieCommand
     extends \membersactivities\commands\mollie\PaymentToMollieCommand
@@ -596,7 +647,7 @@ Framework OrderToMollieCommand
 </ul>
 <p>This is an example of a client-specific payment type implementation.</p>
 
-<h2 id="admin">19. Administration Example</h2>
+<h2 id="admin">20. Administration Example</h2>
 <p>The example contains administrative commands for:</p>
 <ul>
 <li>creating and editing activities;</li>
@@ -616,7 +667,7 @@ Framework OrderToMollieCommand
 }</code></pre>
 <p>This should be the normal pattern for commands exposing administrative data or state-changing administrative operations.</p>
 
-<h2 id="run">20. Run and Test the Example</h2>
+<h2 id="run">21. Run and Test the Example</h2>
 <h3>20.1 Development server</h3>
 <p>For a local PHP development environment, the application's public entry point should be <code>index.php</code>. Depending on the Controller Framework's routing requirements and your web-server setup, configure the document root and rewrite rules according to the supplied <code>.htaccess</code>.</p>
 <h3>20.2 First test</h3>
@@ -649,7 +700,7 @@ Payment_RGLR::statusReceived()</div>
 <h3>20.5 Test administration</h3>
 <p>Log in as an administrator and verify activity, cost item, member and payment management.</p>
 
-<h2 id="customize">21. How to Turn the Example into Your Application</h2>
+<h2 id="customize">22. How to Turn the Example into Your Application</h2>
 <p>The recommended approach is incremental.</p>
 <div class="step"><strong>1. Keep the framework dependency unchanged.</strong><br>Start with MembersActivities Framework 1.0.30.</div>
 <div class="step"><strong>2. Replace configuration.</strong><br>Set application name, domain, database, mail and integration credentials.</div>
@@ -662,7 +713,7 @@ Payment_RGLR::statusReceived()</div>
 <div class="step"><strong>9. Remove unused integrations.</strong><br>If you do not use Google Wallet, seat maps or another optional feature, do not retain unnecessary configuration or code.</div>
 <div class="step"><strong>10. Test before production.</strong><br>Test authentication, CSRF, subscriptions, payments, webhooks, exports and error paths.</div>
 
-<h2 id="checklist">22. Basic Implementation Checklist</h2>
+<h2 id="checklist">23. Basic Implementation Checklist</h2>
 <table>
 <tr><th>Area</th><th>Check</th></tr>
 <tr><td>Composer</td><td><code>samoscon/membersactivities-framework</code> is set to 1.0.30.</td></tr>
