@@ -9,7 +9,7 @@ author: dirkvm
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MembersActivities Framework 1.0.30 — Client Application Developer Guide</title>
+<title>MembersActivities Framework 1.0.31 — Client Application Developer Guide</title>
 <style>
 :root {
   --ink: #202124;
@@ -135,10 +135,10 @@ a { color: var(--accent); }
 <div class="container">
 
 <header>
-  <h1>MembersActivities Framework 1.0.30</h1>
+  <h1>MembersActivities Framework 1.0.31</h1>
   <div class="subtitle">Client Application Developer Guide</div>
   <div class="meta">
-    <div><strong>Version</strong>1.0.30</div>
+    <div><strong>Version</strong>1.0.31</div>
     <div><strong>Controller Framework</strong>1.0.31</div>
     <div><strong>PHP</strong>8.3 or compatible PHP 8.x</div>
     <div><strong>Database</strong>MySQL / MariaDB</div>
@@ -194,7 +194,7 @@ a { color: var(--accent); }
        └── Client configuration
        │
        ▼
-MembersActivities Framework 1.0.30
+MembersActivities Framework 1.0.31
        │
        ▼
 Controller Framework 1.0.31</div>
@@ -205,7 +205,7 @@ Controller Framework 1.0.31</div>
 <tr><th>Component</th><th>Requirement</th></tr>
 <tr><td>PHP</td><td>8.3 or compatible PHP 8.x</td></tr>
 <tr><td>Controller Framework</td><td>1.0.31</td></tr>
-<tr><td>MembersActivities Framework</td><td>1.0.30</td></tr>
+<tr><td>MembersActivities Framework</td><td>1.0.31</td></tr>
 <tr><td>Database</td><td>MySQL / MariaDB</td></tr>
 <tr><td>Database access</td><td>PDO</td></tr>
 <tr><td>Web server</td><td>Apache or compatible PHP web server</td></tr>
@@ -217,7 +217,7 @@ Controller Framework 1.0.31</div>
 <p>A client application installs the framework through Composer:</p>
 <pre><code>{
     "require": {
-        "samoscon/membersactivities-framework": "1.0.30"
+        "samoscon/membersactivities-framework": "^1.0.31"
     }
 }</code></pre>
 <p>The MembersActivities Framework requires <code>samoscon/controller-framework ^1.0.31</code>. Composer installs that dependency automatically.</p>
@@ -652,7 +652,7 @@ class MyActivityCommand
 <li>PHP version verified</li>
 <li>Composer dependencies installed</li>
 <li>Controller Framework 1.0.31 installed</li>
-<li>MembersActivities Framework 1.0.30 installed</li>
+<li>MembersActivities Framework 1.0.31 installed</li>
 <li>Database configured</li>
 <li>Database backup available</li>
 <li><code>app_options.ini</code> protected</li>
@@ -675,7 +675,7 @@ class MyActivityCommand
 </ul>
 
 <h2 id="summary">30. Architectural Summary</h2>
-<p>MembersActivities Framework 1.0.30 is intended to be used as a reusable domain framework rather than as a complete application.</p>
+<p>MembersActivities Framework 1.0.31 is intended to be used as a reusable domain framework rather than as a complete application.</p>
 <div class="diagram">┌─────────────────────────────────────────┐
 │          Client Application             │
 │                                         │
@@ -703,7 +703,7 @@ class MyActivityCommand
 <p>This makes client applications easier to maintain and allows framework upgrades without unnecessarily modifying application code.</p>
 
 <footer>
-  <p><strong>Reference version:</strong> MembersActivities Framework 1.0.30 · Controller Framework 1.0.31 · PHP 8.3 · MySQL/MariaDB</p>
+  <p><strong>Reference version:</strong> MembersActivities Framework 1.0.31 · Controller Framework 1.0.31 · PHP 8.3 · MySQL/MariaDB</p>
   <p>Client applications should verify the exact framework versions in <code>composer.json</code> and <code>composer.lock</code> before applying this guide to an existing installation.</p>
 </footer>
 
