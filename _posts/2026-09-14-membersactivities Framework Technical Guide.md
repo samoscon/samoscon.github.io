@@ -9,7 +9,7 @@ author: dirkvm
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MembersActivities Framework 1.0.30 — Technical Guide</title>
+<title>MembersActivities Framework 1.0.31 — Technical Guide</title>
 <style>
 :root{--ink:#202124;--muted:#5f6368;--accent:#1a73e8;--soft:#f6f8fa;--border:#dadce0;--note:#fff8e1;--code:#f6f8fa}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
@@ -36,10 +36,10 @@ a{color:var(--accent)}
 <div class="container">
 
 <header>
-<h1>MembersActivities Framework 1.0.30</h1>
+<h1>MembersActivities Framework 1.0.31</h1>
 <div class="subtitle">Technical Guide &amp; Object Model Reference</div>
 <div class="meta">
-<div><strong>Framework</strong>MembersActivities 1.0.30</div>
+<div><strong>Framework</strong>MembersActivities 1.0.31</div>
 <div><strong>Controller Framework</strong>1.0.31</div>
 <div><strong>PHP</strong>8.3+</div>
 <div><strong>Database</strong>MySQL / MariaDB via PDO</div>
@@ -78,7 +78,7 @@ a{color:var(--accent)}
 </section>
 
 <h2 id="scope">1. Scope and Architecture</h2>
-<p>MembersActivities Framework 1.0.30 is a reusable domain framework for applications managing members, activities, cost items, subscriptions and payments. It is implemented as a Composer package and extends the Controller Framework.</p>
+<p>MembersActivities Framework 1.0.31 is a reusable domain framework for applications managing members, activities, cost items, subscriptions and payments. It is implemented as a Composer package and extends the Controller Framework.</p>
 <div class="diagram">┌─────────────────────────────────────────────────────┐
 │                  Client Application                 │
 │                                                     │
@@ -87,7 +87,7 @@ a{color:var(--accent)}
 └──────────────────────────┬──────────────────────────┘
                            │
 ┌──────────────────────────▼──────────────────────────┐
-│          MembersActivities Framework 1.0.30         │
+│          MembersActivities Framework 1.0.31         │
 │                                                     │
 │ Activities · Costitems · Subscriptions · Payments  │
 │ Mappers · Commands · Mollie · Google Wallet         │
@@ -537,7 +537,7 @@ sending
 
 <h2 id="checklist">24. Technical Review Checklist</h2>
 <ul class="check">
-<li>MembersActivities Framework version is 1.0.30.</li>
+<li>MembersActivities Framework version is 1.0.31.</li>
 <li>Controller Framework version is 1.0.31.</li>
 <li>PHP version satisfies the package requirement.</li>
 <li>PDO MySQL/MariaDB is configured correctly.</li>
@@ -559,8 +559,8 @@ sending
 </ul>
 
 <footer>
-<p><strong>Reference:</strong> MembersActivities Framework 1.0.30 · Controller Framework 1.0.31</p>
-<p>This technical guide describes the framework source and reference database supplied with Release 1.0.30. Client-specific implementations may add domain behaviour beyond the framework API described here.</p>
+<p><strong>Reference:</strong> MembersActivities Framework 1.0.31 · Controller Framework 1.0.31</p>
+<p>This technical guide describes the framework source and reference database supplied with Release 1.0.31. Client-specific implementations may add domain behaviour beyond the framework API described here.</p>
 </footer>
 
 </div>
