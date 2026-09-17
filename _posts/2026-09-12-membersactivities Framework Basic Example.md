@@ -9,7 +9,7 @@ author: dirkvm
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>MembersActivities Framework 1.0.30 — Basic Example Guide</title>
+<title>MembersActivities Framework 1.0.31 — Basic Example Guide</title>
 <style>
 :root{--ink:#202124;--muted:#5f6368;--accent:#1a73e8;--soft:#f6f8fa;--border:#dadce0;--note:#fff8e1}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
@@ -47,10 +47,10 @@ footer{margin-top:60px;border-top:1px solid var(--border);padding-top:20px;color
 <div class="container">
 
 <header>
-<h1>MembersActivities Framework 1.0.30</h1>
+<h1>MembersActivities Framework 1.0.31</h1>
 <div class="subtitle">Basic Example Application Guide</div>
 <div class="meta">
-<div><strong>Framework</strong>MembersActivities 1.0.30</div>
+<div><strong>Framework</strong>MembersActivities 1.0.31</div>
 <div><strong>Controller Framework</strong>1.0.31</div>
 <div><strong>Purpose</strong>Learning and starting-point application</div>
 <div><strong>Database</strong>MySQL / MariaDB</div>
@@ -87,7 +87,7 @@ footer{margin-top:60px;border-top:1px solid var(--border);padding-top:20px;color
 </section>
 
 <h2 id="purpose">1. Purpose of the Example</h2>
-<p>The <code>example</code> directory included in MembersActivities Framework 1.0.30 is a complete starting-point client application. It demonstrates how the framework is intended to be integrated rather than merely showing isolated API calls.</p>
+<p>The <code>example</code> directory included in MembersActivities Framework 1.0.31 is a complete starting-point client application. It demonstrates how the framework is intended to be integrated rather than merely showing isolated API calls.</p>
 <p>The example contains:</p>
 <ul>
 <li>Composer configuration;</li>
@@ -186,7 +186,7 @@ footer{margin-top:60px;border-top:1px solid var(--border);padding-top:20px;color
 <li>a PHP-compatible web server;</li>
 <li>HTTPS for production use.</li>
 </ul>
-<p>The example's Composer configuration requires MembersActivities Framework 1.0.30. The framework in turn uses Controller Framework 1.0.31.</p>
+<p>The example's Composer configuration requires MembersActivities Framework 1.0.31. The framework in turn uses Controller Framework 1.0.31.</p>
 
 <h2 id="copy">4. Create the Application</h2>
 <div class="step"><strong>Step 1.</strong> Copy the complete <code>example</code> directory to a working application directory.</div>
@@ -203,7 +203,7 @@ footer{margin-top:60px;border-top:1px solid var(--border);padding-top:20px;color
         "blueimp/jquery-file-upload": "9.22.*",
         "tinymce/tinymce": "^8.0",
         "chillerlan/php-qrcode": "*",
-        "samoscon/membersactivities-framework": "1.0.30",
+        "samoscon/membersactivities-framework": "^1.0.31",
         "google/auth": "^1.53",
         "guzzlehttp/guzzle": "^7.10",
         "google/apiclient": "^2.19",
@@ -702,7 +702,7 @@ Payment_RGLR::statusReceived()</div>
 
 <h2 id="customize">22. How to Turn the Example into Your Application</h2>
 <p>The recommended approach is incremental.</p>
-<div class="step"><strong>1. Keep the framework dependency unchanged.</strong><br>Start with MembersActivities Framework 1.0.30.</div>
+<div class="step"><strong>1. Keep the framework dependency unchanged.</strong><br>Start with MembersActivities Framework 1.0.31.</div>
 <div class="step"><strong>2. Replace configuration.</strong><br>Set application name, domain, database, mail and integration credentials.</div>
 <div class="step"><strong>3. Replace the client models.</strong><br>Adapt <code>Member</code>, <code>Activity</code>, <code>Costitem</code>, <code>Subscription</code> and <code>Payment</code> to your domain.</div>
 <div class="step"><strong>4. Define classifications.</strong><br>Create type implementations such as <code>Activity_RGLR</code> or your own application-specific types.</div>
@@ -716,7 +716,7 @@ Payment_RGLR::statusReceived()</div>
 <h2 id="checklist">23. Basic Implementation Checklist</h2>
 <table>
 <tr><th>Area</th><th>Check</th></tr>
-<tr><td>Composer</td><td><code>samoscon/membersactivities-framework</code> is set to 1.0.30.</td></tr>
+<tr><td>Composer</td><td><code>samoscon/membersactivities-framework</code> is set to 1.0.31.</td></tr>
 <tr><td>Controller Framework</td><td>1.0.31 is installed through Composer.</td></tr>
 <tr><td>Configuration</td><td>Application, database and integration settings are replaced with client values.</td></tr>
 <tr><td>Secrets</td><td><code>_SALTRAND</code>, database passwords and API credentials are protected.</td></tr>
@@ -734,8 +734,8 @@ Payment_RGLR::statusReceived()</div>
 </table>
 
 <footer>
-<p><strong>Reference:</strong> MembersActivities Framework 1.0.30 · Controller Framework 1.0.31</p>
-<p>This guide is based on the example application included in the MembersActivities Framework 1.0.30 release. The example contains application-specific sample code and should be adapted before production use.</p>
+<p><strong>Reference:</strong> MembersActivities Framework 1.0.31 · Controller Framework 1.0.31</p>
+<p>This guide is based on the example application included in the MembersActivities Framework 1.0.31 release. The example contains application-specific sample code and should be adapted before production use.</p>
 </footer>
 
 </div>
