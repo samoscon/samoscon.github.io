@@ -251,7 +251,7 @@ folder structure and all underlying example files:
 
 <p>
 The database setup is provided separately and is <strong>not included in the ZIP archive</strong>:
-<a href="#">Download DatabaseSetup.sql</a>.
+<a href="assets/MembersActivities-Framework-1.0.30-Basic-Example-DatabaseSetup.sql">Download DatabaseSetup.sql</a>.
 </p>
 </div>
 
