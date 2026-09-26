@@ -753,6 +753,7 @@ PaymentConfirmationCommand</code></pre>
 ActivityComposite
 Costitem
 Member
+MemberComposite
 Subscription
 Payment
 Ticket
