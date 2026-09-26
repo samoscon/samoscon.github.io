@@ -1305,7 +1305,7 @@ class MyActivityCommand
 
 <h3>32.2 Update the database</h3>
 
-<p>Apply the new definitions from <code>example/DatabaseSetup.sql</code> for:</p>
+<p>Apply the new definitions from <code>Basic Example guide -> DatabaseSetup.sql</code> for:</p>
 
 <ul>
 <li><code>ticket</code>;</li>
