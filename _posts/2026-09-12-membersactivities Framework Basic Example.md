@@ -246,7 +246,7 @@ configuration of your own application.
 <p>
 The complete example application is available as a ZIP archive, including the
 folder structure and all underlying example files:
-<a href="assets/MembersActivities-Framework-1.1.0-Basic-Example-Folder-Structure.zip">Download the Example Folder Structure and Files (ZIP)</a>.
+<a href="{{'assets/MembersActivities-Framework-1.1.0-Basic-Example-Folder-Structure.zip' | relative_url }}">Download the Example Folder Structure and Files (ZIP)</a>.
 </p>
 
 <p>
