@@ -171,7 +171,7 @@ a { color: var(--accent); }
 <li><a href="#payments">Payment Security</a></li>
 <li><a href="#mollie">Mollie Integration</a></li>
 <li><a href="#webhook">Mollie Webhook</a></li>
-<li><a href="#models">Models</a></li>
+<li><a href="#models">Models and the Composite Pattern</a></li>
 <li><a href="#tickets">Tickets</a></li>
 <li><a href="#ticketscan">Ticket Scanning</a></li>
 <li><a href="#seats">Seat Reservations</a></li>
@@ -745,7 +745,7 @@ PaymentConfirmationCommand</code></pre>
 
 <p>Applications using tickets should create or update ticket state based on the confirmed server-side payment state rather than trusting client-side payment information.</p>
 
-<h2 id="models">20. Models</h2>
+<h2 id="models">20. Models and the Composite Pattern</h2>
 
 <p>Core domain models include:</p>
 
@@ -761,6 +761,147 @@ GoogleWalletTicket</code></pre>
 
 <p>The client application should use the model API where possible instead of directly manipulating database records.</p>
 
+<h3>20.1 Composite Domain Objects</h3>
+
+<p>The MembersActivities Framework uses the <strong>Composite design pattern</strong> for two important domain concepts: <strong>Activities</strong> and <strong>Members</strong>.</p>
+
+<p>This allows a domain object to represent either an individual object or a parent containing child objects, while exposing a consistent object-oriented model to the client application.</p>
+
+<div class="diagram">                 Composite
+                    │
+          ┌─────────┴─────────┐
+          │                   │
+       Activity             Member
+          │                   │
+      children             children
+          │                   │
+      Activity             Member
+      Activity             Member
+      Activity             Member</div>
+
+<h3>20.2 Activity Composite</h3>
+
+<p>An <code>Activity</code> can have child activities. This is represented by the <code>ActivityComposite</code> concept.</p>
+
+<p>A parent activity can therefore act as a container for one or more child activities without requiring the client application to handle parent and child activities as fundamentally different objects.</p>
+
+<div class="diagram">Activity
+   │
+   ├── Activity
+   ├── Activity
+   └── Activity</div>
+
+<p>This is useful when an application wants to group related activities under a common parent.</p>
+
+<p>For example, an application could model a concert series as a parent activity with individual concerts as child activities:</p>
+
+<div class="diagram">2026 Concert Season
+   │
+   ├── Concert 1
+   ├── Concert 2
+   ├── Concert 3
+   └── Concert 4</div>
+
+<p>The exact interpretation of the parent-child relationship is application-specific. The framework provides the object model and persistence mechanism; the client application defines how the hierarchy is presented and used.</p>
+
+<h3>20.3 Member Composite</h3>
+
+<p>The same Composite principle is also used for <code>Member</code>.</p>
+
+<p>A member can have child members. This allows a client application to represent relationships where one member acts as a parent of one or more other members.</p>
+
+<div class="diagram">Member
+   │
+   ├── Member
+   ├── Member
+   └── Member</div>
+
+<p>This can, for example, be used to model a household or another application-specific member hierarchy.</p>
+
+<p>The child members remain normal <code>Member</code> objects. The parent-child relationship does not require the client application to introduce a separate domain concept for every level of the hierarchy.</p>
+
+<h3>20.4 Common Composite principle</h3>
+
+<p>The Activity and Member hierarchies follow the same object-oriented principle:</p>
+
+<table>
+<tr>
+<th>Concept</th>
+<th>Parent</th>
+<th>Children</th>
+</tr>
+<tr>
+<td>Activity</td>
+<td>Parent Activity</td>
+<td>Child Activities</td>
+</tr>
+<tr>
+<td>Member</td>
+<td>Parent Member</td>
+<td>Child Members</td>
+</tr>
+</table>
+
+<p>Conceptually, both can be represented as:</p>
+
+<div class="diagram">                 Domain Object
+                       │
+             ┌─────────┴─────────┐
+             │                   │
+           Parent              Child
+             │                   │
+             └───────┬───────────┘
+                     │
+               same domain type</div>
+
+<p>This is an application of the <strong>Composite Object-Oriented Design Pattern</strong>: a parent object and its child objects belong to the same domain type and can therefore be treated consistently by application code.</p>
+
+<div class="note">
+<strong>Client application principle:</strong> do not assume that every Activity or Member is a leaf object. When implementing business logic, views or navigation, always consider that an Activity or Member may participate in a parent-child hierarchy.
+</div>
+
+<h3>20.5 Working with hierarchies</h3>
+
+<p>Client applications should use the framework's model relationships rather than reproducing parent-child logic in controllers or views.</p>
+
+<p>For Activities, this means that application code should take the <code>ActivityComposite</code> relationship into account when displaying or processing activities.</p>
+
+<p>For Members, the same principle applies to the Member hierarchy.</p>
+
+<p>The hierarchy can be visualized as:</p>
+
+<div class="diagram">Activity hierarchy
+
+Parent Activity
+│
+├── Child Activity
+│      ├── Child Activity
+│      └── Child Activity
+│
+└── Child Activity
+
+Member hierarchy
+
+Parent Member
+│
+├── Child Member
+│      ├── Child Member
+│      └── Child Member
+│
+└── Child Member</div>
+
+<p>Because the relationship is recursive, more than one level of nesting can be represented where the application's business rules require it.</p>
+
+<h3>20.6 Why the Composite pattern is useful</h3>
+
+<ul>
+<li>Parent and child objects share the same domain model.</li>
+<li>Client code can work with individual objects and groups using a consistent abstraction.</li>
+<li>Hierarchical structures can be represented without introducing a separate object type for every hierarchy level.</li>
+<li>Business rules can be applied consistently to both parent and child objects.</li>
+<li>The framework can support recursive structures without requiring client applications to duplicate the hierarchy implementation.</li>
+</ul>
+
 <h2 id="tickets">21. Tickets</h2>
 
 <p>Version 1.1.0 introduces <code>Ticket</code> as a first-class domain object.</p>
@@ -771,10 +912,7 @@ GoogleWalletTicket</code></pre>
 \membersactivities\model\subscriptions\TicketMapper
 \membersactivities\model\subscriptions\TicketTypeImplementation</code></pre>
 
-<p>These classes are abstract framework components. A client application normally provides the concrete implementation, for example:</p>
-
-<pre><code>\model\Ticket
-\model\Ticket_RGLR</code></pre>
+<p>These classes are framework components. A client application can provide concrete implementations where application-specific ticket behaviour is required.</p>
 
 <h3>21.1 Ticket lifecycle</h3>
 
@@ -802,7 +940,7 @@ GoogleWalletTicket</code></pre>
 
 <h3>21.2 Ticket token</h3>
 
-<p>Every ticket can have a unique token stored in the <code>token</code> field.</p>
+<p>Every ticket has a unique token stored in the <code>token</code> field.</p>
 
 <p>The framework provides:</p>
 
@@ -836,11 +974,7 @@ used = 0</code></pre>
 
 <pre><code>RGLR</code></pre>
 
-<p>A client application may therefore provide:</p>
-
-<pre><code>Ticket_RGLR</code></pre>
-
-<p>or other ticket types as required by the application.</p>
+<p>A client application may therefore provide a corresponding regular ticket implementation where required.</p>
 
 <h2 id="ticketscan">22. Ticket Scanning</h2>
 
@@ -852,7 +986,7 @@ used = 0</code></pre>
 \membersactivities\model\subscriptions\TicketScanMapper
 \membersactivities\model\subscriptions\TicketScanTypeImplementation</code></pre>
 
-<p>As with <code>Ticket</code>, these are abstract framework components intended to be specialized by the client application.</p>
+<p>As with <code>Ticket</code>, these are framework components that can be specialized by the client application.</p>
 
 <h3>22.1 Scan results</h3>
 
@@ -908,11 +1042,7 @@ scanned_at</code></pre>
 
 <pre><code>RGLR</code></pre>
 
-<p>A client application may therefore provide:</p>
-
-<pre><code>TicketScan_RGLR</code></pre>
-
-<p>or additional scanner-specific implementations where required.</p>
+<p>A client application may therefore provide a corresponding regular scan implementation where required.</p>
 
 <h2 id="seats">23. Seat Reservations</h2>
 
@@ -963,7 +1093,7 @@ $ticket = \model\Ticket::findByToken($token);</code></pre>
 
 <h3>24.1 TicketMapper</h3>
 
-<p><code>TicketMapper</code> provides two important operations:</p>
+<p><code>TicketMapper</code> provides operations including:</p>
 
 <pre><code>claimTicket(int $ticketId): bool
 
@@ -1069,25 +1199,11 @@ Process mail queue</div>
 
 <h3>29.1 Version 1.0.31 behaviour</h3>
 
-<p>Previously, the framework generated Google Wallet ticket objects based on the subscription quantity:</p>
-
-<pre><code>for ($i = 0; $i &lt; $subscription-&gt;quantity; $i++) {
-    // create ticket #1, #2, ...
-}</code></pre>
+<p>Previously, the framework generated Google Wallet ticket objects based on the subscription quantity.</p>
 
 <h3>29.2 Version 1.1.0 behaviour</h3>
 
-<p>The framework now obtains the actual ticket records:</p>
-
-<pre><code>foreach (
-    \model\Ticket::findAll(
-        "WHERE subscription_id = " . $subscription->getId()
-    ) as $ticket
-) {
-    // create Wallet object for this ticket
-}</code></pre>
-
-<p>The ticket ID is used as the ticket number/object identifier.</p>
+<p>The framework now obtains the actual ticket records and creates a Wallet object for each persistent ticket.</p>
 
 <div class="diagram">Subscription
      │
@@ -1097,7 +1213,7 @@ Process mail queue</div>
      │
      └── Ticket ID 154 ──► Google Wallet Object 154</div>
 
-<p>This means that Google Wallet objects now correspond to persistent ticket entities rather than to a calculated ticket number within a subscription.</p>
+<p>The ticket ID is used as the ticket number/object identifier.</p>
 
 <div class="note">
 <strong>Migration consideration:</strong> applications upgrading from 1.0.31 should determine how existing subscriptions are converted into individual Ticket records before relying on the new Google Wallet behaviour.
@@ -1115,28 +1231,6 @@ TicketTypeImplementation
 TicketScanTypeImplementation</code></pre>
 
 <p>Client-specific business rules should be implemented in these extension points where appropriate rather than accumulating all business logic in controllers.</p>
-
-<h3>30.1 Ticket types</h3>
-
-<p>Ticket types are selected through the <code>classification</code> field of the ticket.</p>
-
-<p>For example:</p>
-
-<pre><code>classification = RGLR</code></pre>
-
-<p>can correspond to:</p>
-
-<pre><code>\model\Ticket_RGLR</code></pre>
-
-<h3>30.2 Ticket scan types</h3>
-
-<p>The same pattern applies to ticket scanning:</p>
-
-<pre><code>classification = RGLR</code></pre>
-
-<p>can correspond to:</p>
-
-<pre><code>\model\TicketScan_RGLR</code></pre>
 
 <h2 id="new-screen">31. Designing a New Client Screen</h2>
 
@@ -1194,7 +1288,7 @@ class MyActivityCommand
 
 <p>Test authenticated and unauthenticated users, invalid identifiers, invalid POST data, invalid CSRF tokens and expected failure paths.</p>
 
-<h2 id="migration">32. Migration from MembersActivities Framework 1.0.31</h2>
+<h2 id="migration">32. Migration from 1.0.31</h2>
 
 <p>Version 1.1.0 introduces database and application-level changes. Existing applications should therefore be upgraded in a controlled sequence.</p>
 
@@ -1243,7 +1337,7 @@ Subscription
 
 <h3>32.4 Update client models</h3>
 
-<p>Applications using the ticket functionality should provide concrete implementations of the new abstract framework models and their mappers.</p>
+<p>Applications using the ticket functionality should provide concrete implementations of the new framework models and their mappers where required.</p>
 
 <h3>32.5 Update Google Wallet</h3>
 
@@ -1288,6 +1382,18 @@ Subscription
 <li>Subscription</li>
 <li>Payment</li>
 <li>Remember-me login</li>
+</ul>
+
+<h3>Composite functionality</h3>
+
+<ul>
+<li>Parent Activity</li>
+<li>Child Activities</li>
+<li>Nested Activity hierarchies where applicable</li>
+<li>Parent Member</li>
+<li>Child Members</li>
+<li>Nested Member hierarchies where applicable</li>
+<li>Correct handling of parent and child objects in views and business logic</li>
 </ul>
 
 <h3>Ticket functionality</h3>
@@ -1421,21 +1527,37 @@ Subscription
 │ Error handling / Audit / Rendering         │
 └────────────────────────────────────────────┘</div>
 
-<p>The most important architectural change in version 1.1.0 is the introduction of the <strong>Ticket domain model</strong>.</p>
+<h3>35.1 Domain relationships</h3>
 
 <div class="diagram">Activity
    │
-   └── CostItem
-          │
-          └── Subscription
-                 │
-                 ├── Payment
-                 │
-                 └── Ticket
-                       │
-                       └── TicketScan</div>
+   ├── Child Activity
+   │      └── Child Activity
+   │
+   └── Child Activity
 
-<p>A subscription can therefore contain multiple persistent tickets. Each ticket can have its own token, status and usage state and can be individually scanned.</p>
+Member
+│
+├── Child Member
+│      └── Child Member
+│
+└── Child Member
+
+Activity
+│
+└── CostItem
+│
+└── Subscription
+│
+├── Payment
+│
+└── Ticket
+│
+└── TicketScan</div>
+
+<p>Both <code>Activity</code> and <code>Member</code> can participate in recursive parent-child relationships following the Composite design pattern.</p>
+
+<p>The ticket model introduces another important domain relationship: a subscription can contain multiple persistent tickets, and each ticket can have multiple scan records.</p>
 
 <p>The key development principle remains:</p>
 
@@ -1443,7 +1565,7 @@ Subscription
 <strong>Keep generic functionality in the framework and implement client-specific behaviour through decorators, strategies, models, commands, configuration and views.</strong>
 </div>
 
-<p>Version 1.1.0 extends this principle to tickets: the framework provides the generic ticket and ticket-scanning infrastructure while the client application defines the concrete ticket types, scanner types and user interface.</p>
+<p>Version 1.1.0 extends this principle to tickets and ticket scanning while retaining the existing Composite-based domain model for Activities and Members.</p>
 
 <p>This makes client applications easier to maintain and allows framework upgrades without unnecessarily modifying application code.</p>
 
