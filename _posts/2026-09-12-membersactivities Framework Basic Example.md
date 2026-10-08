@@ -1,7 +1,7 @@
 ---
 
 layout: post
-author: dirkvm
+author: Dirk Van Meirvenne
 ---
 
 <html lang="en">
